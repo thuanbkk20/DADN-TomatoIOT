@@ -8,7 +8,13 @@
     ```bash
     cp .env.example .env
     ```
+### Install dependencies package
+1. Mở terminal lên rồi lệnh sau:
 
+    ```bash
+    composer install
+    ```
+2. Nếu chưa có `composer` thì tiến hành cài đặt ở trang web [này](https://getcomposer.org/download/).
 ### Tạo dotenv
 
 1. Vào folder project, truy cập file `.env`.
