@@ -21,12 +21,12 @@ class Home extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    // public function get_user(){
-    //     $this->data['errors'] = Session::Flash('errors');
-    //     $this->data['msg'] = Session::Flash('msg');
-    //     $this->data['old'] = Session::Flash('old');
-    //     $this->render("users/add", $this->data);
-    // }
+    public function get_user(){
+        $this->data['errors'] = Session::Flash('errors');
+        $this->data['msg'] = Session::Flash('msg');
+        $this->data['old'] = Session::Flash('old');
+        $this->render("users/add", $this->data);
+    }
 
     // public function post_user(){
     //     $request = new Request();
