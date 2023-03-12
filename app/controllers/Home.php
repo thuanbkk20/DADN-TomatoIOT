@@ -16,8 +16,8 @@ class Home extends Controller{
         // echo '<pre>';print_r(Session::data());echo '</pre>';
 
         $this->data['sub_content']['page_title'] = "Dashboard";
-        $this->data['sub_content']['product_list'] = $this->model_home->All();
-        $this->data["content"] = 'products/list';
+        // $this->data['sub_content']['product_list'] = $this->model_home->All();
+        $this->data["content"] = 'dashboard/dashboard';
         $this->render('layouts/basic_layout', $this->data);
     }
 
