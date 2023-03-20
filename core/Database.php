@@ -89,4 +89,55 @@ class Database{
     function lastInsertId(){
         return $this->__conn->lastInsertId();
     }
+
+
+    //Data migration 
+    public function applyMigrations(){
+        echo "applyMigrations";
+        $this->createMigrationsTable();
+        $newMigration = [];
+        $migrate_dir = scandir('migrations');
+        if(!empty($migrate_dir)){
+            foreach($migrate_dir as $item){
+                if($item != '.' && $item != '..' && file_exists('migrations/'.$item)){ 
+                    require_once 'migrations/'.$item;
+                    $className = trim($item,'.php');
+                    $instance = new $className;
+                    $this->log("Applying migration $item");
+                    $instance->up();
+                    $this->log("Applied migration $item".PHP_EOL);
+                    $newMigration[] = $item;
+                }
+            }
+        }
+
+        if(!empty($newMigration)){
+            $this->saveMigrations($newMigration);
+        }else{
+            $this->log("All migrations are applied.\n");
+        }
+    } 
+
+    public function createMigrationsTable()
+    {
+        $this->query("
+            CREATE TABLE IF NOT EXISTS migrations (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                migration VARCHAR(255),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            ) ENGINE=INNODB;
+        ");
+    }
+
+    public function saveMigrations(array $migrations)
+    {
+        $str = implode(",", array_map(fn ($m) => "('$m')", $migrations));
+        $sql = "INSERT INTO migrations (migration) VALUES $str";
+        $this->query($sql);
+    }
+
+    protected function log($message){
+        echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
+    }
+
 }
