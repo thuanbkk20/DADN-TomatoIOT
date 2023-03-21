@@ -121,4 +121,8 @@ class App{
     public function getCurrentController() {
         return $this->__controller;
     }
+
+    public function getDatabase(){
+        return $this->__db;
+    }
 }
