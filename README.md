@@ -31,6 +31,23 @@
 - Trong đó `DB_PASSWORD`, `DB_USER` lần lượt là các thông tin về `user` và `password` của `mysql server`. 
 - `DB_NAME` là tên `schema` mà bạn đặt cho `database` trong project này.
 
+### Run migration:
+
+1. Mở terminal lên rồi lệnh sau:
+
+    ```bash
+    php migrations.php
+    ```
+
+2. Terminal trả về như sau là thành công:
+
+    ```bash
+    [2021-10-28 19:10:49] - Applying migration m0001_initial.php
+    [2021-10-28 19:10:49] - Applyied migration m0001_initial.php
+    ```
+
+3. Nếu không được như vậy thì hãy `drop` hết table trong `database` rồi chạy migrate lại.<br />
+
 ## Run project
 
 Để chạy project, chạy lệnh sau:
