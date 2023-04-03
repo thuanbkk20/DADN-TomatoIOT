@@ -42,6 +42,13 @@ class App{
         $url = $this->getUrl();
         $url = $this->__routes->handleRoute($url);
 
+        //Middleware App
+        $this->handleRouteMiddleware($this->__routes->getUri(),$this->__db);
+        // $this->handleGlobalMiddleware($this->__db);
+
+        //Service Provider
+        $this->handleAppServiceProvider($this->__db);
+
         $urlArr = array_filter(explode("/", $url));
         $urlArr = array_values($urlArr);
 
@@ -122,7 +129,62 @@ class App{
         return $this->__controller;
     }
 
-    public function getDatabase(){
-        return $this->__db;
+    public function handleRouteMiddleware($routeKey, $db){
+        //Middleware App
+        global $config;
+        $routeKey = trim($routeKey);
+        if(!empty($config['app']['routeMiddleware'])){
+            $routeMiddleware = $config['app']['routeMiddleware'];
+            foreach($routeMiddleware as $key=>$Item){
+                if(trim($key) == $routeKey && file_exists('app/middlewares/'.$Item.'.php')){
+                    require_once 'app/middlewares/'.$Item.'.php';
+                    if(class_exists($Item)){
+                        $middlewareObject = new $Item();
+                        if(!empty($db)){
+                            $middlewareObject->db = $db;
+                        }
+                        $middlewareObject->handle();
+                    }
+                }
+            }
+        }
+    }
+
+    public function handleGlobalMiddleware($db){
+        global $config;
+        if(!empty($config['app']['globalMiddleware'])){
+            $globalMiddleware = $config['app']['globalMiddleware'];
+            foreach($globalMiddleware as $Item){
+                if(file_exists('app/middlewares/'.$Item.'.php')){
+                    require_once 'app/middlewares/'.$Item.'.php';
+                    if(class_exists($Item)){
+                        $middlewareObject = new $Item();
+                        if(!empty($db)){
+                            $middlewareObject->db = $db;
+                        }
+                        $middlewareObject->handle();
+                    }
+                }
+            }
+        }
+    }
+
+    public function handleAppServiceProvider($db){
+        global $config;
+        if(!empty($config['app']['boot'])){
+            $serviceProviderArr = $config['app']['boot'];
+            foreach($serviceProviderArr as $serviceProvider){
+                if(file_exists('app/core/'.$serviceProvider.'.php')){
+                    require_once 'app/core/'.$serviceProvider.'.php';
+                    if(class_exists($serviceProvider)){
+                        $serviceProviderObject = new $serviceProvider();
+                        if(!empty($db)){
+                            $serviceProviderObject->db = $db;
+                        }
+                        $serviceProviderObject->boot();
+                    }
+                }
+            }
+        }
     }
 }
