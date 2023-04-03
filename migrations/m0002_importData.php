@@ -4,9 +4,9 @@ class m0002_importData{
         $dbObject = new DB();
         $db = $dbObject->db;
         //Insert data into user table
-        $sql = "USE TomatoIoT;
+        $sql = 'USE TomatoIoT;
         INSERT INTO user
-        VALUES ('avfae13','admin','12345678','NguyenVanA','0123456789','admin');";
+        VALUES ("avfae13","admin@gmail.com","$2y$10$kR3IBZ4Aunux/zENSwsLremmklA5x.iJT4nXlRPlYCeGjeleRfJ4i","NguyenVanA","0123456789","admin");';
         $db->query($sql);
     }
 }
