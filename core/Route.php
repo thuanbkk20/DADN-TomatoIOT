@@ -1,9 +1,6 @@
 <?php
 class Route{
-    public function __construct(){
-        
-    }
-
+    private $__keyRoute = null, $__uri;
     public function handleRoute($url){
         global $routes;
         unset($routes['default_controller']);
@@ -14,13 +11,25 @@ class Route{
         }
 
         $handleUrl = $url;
+        $this->__keyRoute = $url;
         if(!empty($routes)){
             foreach($routes as $key=>$value){
                 if(preg_match('~'.$key.'~is',$url)){
                     $handleUrl = preg_replace('~'.$key.'~is',$value, $url);
+                    $this->__keyRoute = $key;
                 }
             }        
         }
         return $handleUrl;
+    }
+
+    public function getUri(){
+        return $this->__keyRoute;
+    }
+
+    static public function getFullUrl(){
+        $uri = App::$app->getUrl();
+        $url = _WEB_ROOT.$uri;
+        return $url;
     }
 }

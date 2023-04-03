@@ -74,7 +74,6 @@ class Database{
     function query($sql){
         try{
             $statement = $this->__conn->prepare($sql);
-
             $statement->execute();
             return $statement;
         }catch(Exception $exception){

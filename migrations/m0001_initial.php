@@ -10,7 +10,7 @@ class m0001_initial{
         CREATE TABLE user(
             id varchar(10) not null,
             username varchar(50) not null,
-            password varchar(50) not null,
+            password varchar(100) not null,
             name varchar(50) not null,
             phone_number varchar(50) not null,
             role varchar(50) not null,

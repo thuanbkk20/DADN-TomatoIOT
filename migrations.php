@@ -20,7 +20,6 @@ if(!empty($config['database'])){
         require_once 'core/DB.php';
     }
     $dbObject = new DB();
-
     $db = $dbObject->db;
     $db->applyMigrations();
 }

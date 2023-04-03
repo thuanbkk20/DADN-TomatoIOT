@@ -22,9 +22,29 @@ if(!empty($config_dir)){
     }
 }
 
+//Load all services
+if(!empty($config['app']['services'])){
+    $allServices = $config['app']['services'];
+    if(!empty($allServices)){
+        foreach($allServices as $serviceName){
+            if(file_exists('app/core'.$serviceName.'.php')){
+                require_once 'app/core'.$serviceName.'.php';
+            }
+        }
+    }
+}
+
+require_once 'core/serviceProvider.php'; //Load serviceProvider class
+
+require_once 'core/View.php'; //Load view class
+
+require_once 'core/Load.php'; //Load 
+
+require_once 'core/Middleware.php'; //Load middleware class
+
 require_once 'core/Route.php';  //Load route class
+
 require_once 'core/Session.php'; //Load session class
-require_once 'app/App.php'; //Load app
 
 //Kiem tra config va load database
 if(!empty($config['database'])){
@@ -37,7 +57,26 @@ if(!empty($config['database'])){
         require_once 'core/DB.php';
     }
 }
+
+require_once 'core/Helper.php';
+
+//Load all helpers
+$allHelpers = scandir('app/helpers');
+if(!empty($allHelpers)){
+    foreach($allHelpers as $item){
+        if($item != '.' && $item != '..' && file_exists('app/helpers/'.$item)){
+            require_once('app/helpers/' . $item);
+        }
+    }
+}
+
+require_once 'app/App.php'; //Load app
+
 require_once 'core/Model.php'; //Load model
+
 require_once 'core/Controller.php';  //Load base controller
+
 require_once 'core/Request.php'; //Load request 
+
 require_once 'core/Response.php'; //Load response
+
