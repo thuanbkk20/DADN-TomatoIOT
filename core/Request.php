@@ -153,6 +153,63 @@ class Request{
                         }
                     }
 
+                    if($ruleName == 'exist'){
+                        $tableName = null;
+                        $fieldCheck = null;
+
+                        if(!empty($ruleArr[0])){
+                            $tableName = $ruleArr[1];
+                        }
+                        if(!empty($ruleArr[1])){
+                            $fieldCheck = $ruleArr[2];
+                        }
+                        
+                        if(!empty($tableName)&&!empty($fieldCheck)&&!empty($dataFields[$fieldName])){
+                            $checkExist = $this->db->query("SELECT $fieldCheck FROM $tableName WHERE $fieldCheck = '$dataFields[$fieldName]';")->rowCount();
+                            if($checkExist==0){
+                                $checkValidate = false;
+                                $this->setErrors($fieldName, $ruleName);
+                            }
+                        }
+                    }
+
+                    if($ruleName == 'correct'){
+                        $tableName = null;
+                        $fieldCheck = null;
+                        $fieldQuery = null;
+                        $fieldValue = null;
+                        if(!empty($ruleArr[1])){
+                            $tableName = $ruleArr[1];
+                        }
+                        if(!empty($ruleArr[2])){
+                            $fieldCheck = $ruleArr[2];
+                        }
+                        if(!empty($ruleArr[3])){
+                            $fieldQuery = $ruleArr[3];
+                        }
+                        if(!empty($ruleArr[4])){
+                            $fieldValue = $ruleArr[4];
+                        }
+                        if(!empty($tableName)&&!empty($fieldCheck)&&!empty($fieldQuery)
+                        &&!empty($fieldValue)&&!empty($dataFields[$fieldName])){
+                            $checkExist = $this->db->query("SELECT $fieldValue FROM $tableName WHERE $fieldCheck = '$dataFields[$fieldQuery]';")->rowCount();
+                            if($checkExist==1){
+                                $query = $this->db->query("SELECT $fieldValue FROM $tableName WHERE $fieldCheck = '$dataFields[$fieldQuery]';");
+                                $value = $query->fetch(PDO::FETCH_ASSOC)[$fieldValue];
+                                if($fieldValue=='password'){
+                                    if(!password_verify($dataFields[$fieldName],$value)){
+                                        $checkValidate = false;
+                                        $this->setErrors($fieldName, $ruleName);
+                                    }
+                                }else if($value!=$dataFields[$fieldName]){
+                                    $checkValidate = false;
+                                    $this->setErrors($fieldName, $ruleName);
+                                }
+                            }
+                        }
+                    }
+                }
+
                     if(preg_match('~^callback_(.+)~is', $ruleName, $callbackArr)){
                         if(!empty($callbackArr[1])){
                             $callbackName = $callbackArr[1];
@@ -166,10 +223,9 @@ class Request{
                             }
                         }
                     }
+
                 }
             }
-
-        }
         return $checkValidate;
     }
 
