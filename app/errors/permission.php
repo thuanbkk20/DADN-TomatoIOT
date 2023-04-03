@@ -1,0 +1,1 @@
+<?php echo 'Mọi người thêm trang lỗi không có quyền truy cập vào giúp nha'?>
