@@ -23,7 +23,7 @@ class m0002_importData{
         INSERT INTO TomatoIoT.setting VALUES ("temperature",27,21,1,$cur_time);
         INSERT INTO TomatoIoT.setting VALUES ("light",3000,2000,1,$cur_time);
         INSERT INTO TomatoIoT.setting VALUES ("air_humid",60,45,1,$cur_time);
-        INSERT INTO TomatoIoT.setting VALUES ("soil_humid",80,70,1,$cur_time);    ';
+        INSERT INTO TomatoIoT.setting VALUES ("soil_humid",80,70,1,$cur_time);';
         $db->query($sql);
     }
 }
