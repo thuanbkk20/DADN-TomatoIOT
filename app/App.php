@@ -44,7 +44,7 @@ class App{
 
         //Middleware App
         $this->handleRouteMiddleware($this->__routes->getUri(),$this->__db);
-        // $this->handleGlobalMiddleware($this->__db);
+        $this->handleGlobalMiddleware($this->__db);
 
         //Service Provider
         $this->handleAppServiceProvider($this->__db);
