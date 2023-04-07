@@ -1,9 +1,9 @@
 <?php
 class ParamsMiddleware extends Middleware{
     public function handle(){
-        if(!empty($_SERVER['QUERY_STRING'])){
-            $response = new Response();
-            $response->reDirect(Route::getFullUrl());
+        $response = new Response();
+        if(!Session::data('user_id')&& $_SERVER['REQUEST_URI']!='/site/login'){
+            $response->reDirect('site/login');
         }
     }
 }

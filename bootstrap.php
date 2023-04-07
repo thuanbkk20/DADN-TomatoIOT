@@ -74,6 +74,10 @@ require_once 'app/App.php'; //Load app
 
 require_once 'core/Model.php'; //Load model
 
+require_once 'core/AdafruitIO.php'; //Load adafruit
+
+require_once 'core/AdafruitIOFeed.php'; //Load adafruit feed
+
 require_once 'core/Controller.php';  //Load base controller
 
 require_once 'core/Request.php'; //Load request 

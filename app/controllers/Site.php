@@ -31,10 +31,11 @@ class Site extends Controller{
             }else{
                 //Trường hợp đăng nhập thành công   
                 $userID = $this->userModel->getUserID($_POST['email'])['id'];
-                setcookie ("user_id", $userID , time() + 3600 * 24 * 30);
+                Session::data('user_id',$userID);
+                $response = new Response();
+                $response->reDirect('home');
             } 
         }
-            
         $this->data['errors'] = Session::Flash('errors');
         $this->data['msg'] = Session::Flash('msg');
         $this->data['old'] = Session::Flash('old');
@@ -79,6 +80,12 @@ class Site extends Controller{
     //         }  
     //     }
     // }
+
+    public function logout(){
+        Session::delete('user_id');
+        $response = new Response();
+        $response->reDirect('site/login');
+    }
 
     public function error(){
         App::$app->loadError('permission');
