@@ -47,14 +47,15 @@ class AdaFruitIOFeed{
 	}
 
     public function getLastUpdate(){
-        $url = $this->url."/api/v2/ThuanNguyenBK/feeds/".$this->feedKey."/data/last";
+        $url = $this->url."/api/v2/jakunai/feeds/".$this->feedKey."/data/last";
         $data = $this->sendRequest($url);
         $data = json_decode($data, true);
-        return $data['updated_at'];
+		if(isset($data['updated_at'])) return $data['updated_at'];
+        return false;
     }
 
     public function getFeedInfo(){
-        $url = $this->url."/api/v2/ThuanNguyenBK/feeds/".$this->feedKey."/data/last";
+        $url = $this->url."/api/v2/jakunai/feeds/".$this->feedKey."/data/last";
 
         return $this->sendRequest($url);
     }

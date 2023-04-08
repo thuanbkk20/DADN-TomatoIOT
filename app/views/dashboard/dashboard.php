@@ -9,7 +9,18 @@
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
             
-            <h1 class="app-page-title">Tổng quan</h1>				    
+            <h1 class="app-page-title">Tổng quan</h1>		
+            
+            <h1 style="text-align: center">Dashboard</h1>
+            <h1 style="text-align: center">Temp data:<?php echo $tempLastData; ?></h1>
+            <h1 style="text-align: center">Temp Last update:<?php echo $tempLastUpdate; ?></h1>
+            <h1 style="text-align: center">Air humid data:<?php echo $air_humidLastData; ?></h1>
+            <h1 style="text-align: center">Air humid Last update:<?php echo $air_humidLastUpdate; ?></h1>
+            <h1 style="text-align: center">Soil humid data:<?php echo $soil_humidLastData; ?></h1>
+            <h1 style="text-align: center">Soil humid Last update:<?php echo $soil_humidLastUpdate; ?></h1>
+            <h1 style="text-align: center">Light data:<?php echo $lightLastData; ?></h1>
+            <h1 style="text-align: center">Light Last update:<?php echo $lightLastUpdate; ?></h1>
+
             <div class="row g-4 mb-4">
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
@@ -127,3 +138,4 @@
 <!-- Charts JS -->
 <script src="public/assets/plugins/chart.js/chart.min.js"></script> 
 <script src="public/assets/js/index-charts.js"></script> 
+
