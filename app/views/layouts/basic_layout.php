@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
+    <title>TPPT - IoT Tomato</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/public/assets/css/style.css">
-</head>
+    <link rel="shortcut icon" href="public/assets/images/tomato.png">  
+    <!-- FontAwesome JS-->
+    <script defer src="public/assets/plugins/fontawesome/js/all.min.js"></script>
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="public/assets/css/portal.css">
+</head> 
 <body>
     <?php
         $this->render('blocks/header');
