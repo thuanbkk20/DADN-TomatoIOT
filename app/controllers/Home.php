@@ -6,7 +6,7 @@ class Home extends Controller{
     public function __construct()
     {
         $this->model_home = $this->model("HomeModel"); 
-        $this->aio = new AdaFruitIO('aio_XCfM15ioltZ789186rYiMTR5oqNb');
+        $this->aio = new AdaFruitIO();
     }
 
     public function index(){
@@ -40,6 +40,8 @@ class Home extends Controller{
         $this->data['sub_content']['tempLastUpdate'] = $tempFeed->getLastUpdate();
         $this->data['sub_content']['page_title'] = "Dashboard";
         $this->data["content"] = 'dashboard/dashboard';
+
+        echo '<pre>'; print_r($this->data['sub_content']);echo '</pre>';
 
         $this->render('layouts/basic_layout', $this->data);
     }
