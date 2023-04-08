@@ -14,11 +14,19 @@
 </head> 
 <body>
     <?php
+        $this->render('blocks/sidebar');
         $this->render('blocks/header');
         $this->render($content, $sub_content);
         $this->render('blocks/footer');
     ?>
 
-    <script type="text/javascript"  src="/public/assets/js/script.js"></script>
+    <script type="text/javascript"  src="public/assets/js/script.js"></script>
+
+    <!-- Javascript -->          
+    <script src="public/assets/plugins/popper.min.js"></script>
+    <script src="public/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    <!-- Page Specific JS -->
+    <script src="public/assets/js/app.js"></script> 
 </body>
 </html>
