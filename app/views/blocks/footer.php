@@ -1,5 +1,5 @@
-<footer class="app-footer">
-    <div class="container text-center py-3">
-    <small class="copyright">Thực hiện bởi nhóm TPPT <span class="sr-only"></span><i class="fas fa-heart" style="color: #fb866a;"></i> d/c <a class="app-link" href="#" target="_blank">Đông Hòa, Dĩ An, Bình Dương</a> Bản quyền © 2023</small>
+<footer class="app-footer ">
+    <div class="container text-end py-3">
+    <small class="copyright">Thực hiện bởi nhóm <strong style="color: forestgreen;">TPPT</strong> <span class="sr-only"></span> <strong>Đại Học Bách Khoa Thành Phố Hồ Chí Minh</strong> Bản quyền © 2023</small>
     </div>
 </footer><!--//app-footer-->

@@ -5,13 +5,14 @@
 <title><?=
     !empty($page_title)?$page_title:"No name"
 ?></title>
+
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
             
             <h1 class="app-page-title">Tổng quan</h1>		
             
-            <h1 style="text-align: center">Dashboard</h1>
+            <!-- <h1 style="text-align: center">Dashboard</h1>
             <h1 style="text-align: center">Temp data:<?php echo $tempLastData; ?></h1>
             <h1 style="text-align: center">Temp Last update:<?php echo $tempLastUpdate; ?></h1>
             <h1 style="text-align: center">Air humid data:<?php echo $air_humidLastData; ?></h1>
@@ -19,18 +20,43 @@
             <h1 style="text-align: center">Soil humid data:<?php echo $soil_humidLastData; ?></h1>
             <h1 style="text-align: center">Soil humid Last update:<?php echo $soil_humidLastUpdate; ?></h1>
             <h1 style="text-align: center">Light data:<?php echo $lightLastData; ?></h1>
-            <h1 style="text-align: center">Light Last update:<?php echo $lightLastUpdate; ?></h1>
+            <h1 style="text-align: center">Light Last update:<?php echo $lightLastUpdate; ?></h1> -->
+
+            <?php
+                $tempLastUpdate = date('H:i:s - d/m/Y');
+                $air_humidLastUpdate = date('H:i:s - d/m/Y');
+                $soil_humidLastUpdate = date('H:i:s - d/m/Y');
+                $lightLastUpdate = date('H:i:s - d/m/Y');
+
+                function isDaytime() {
+                    date_default_timezone_set('Asia/Ho_Chi_Minh'); // Đặt múi giờ theo định dạng của bạn
+                    $hour = (int) date('H'); // Lấy giờ hiện tại (định dạng 24 giờ)
+                    return $hour >= 6 && $hour < 18; // Kiểm tra xem giờ hiện tại có nằm trong khoảng thời gian ban ngày hay không
+                }                
+            ?>
 
             <div class="row g-4 mb-4">
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ ẩm đất</h4>
-                            <div class="stats-figure">72.4%</div>
+                            <div class="stats-figure">
+                                <!-- CHƯA CHỈNH SỬA THEO CHẾ ĐỘ RA HOA KẾT QUẢ HAY CÒN XANH - BẢN DEMO TẠM THEO NGÀY ĐÊM -->
+                                <?php if($soil_humidLastData > 70 && isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $soil_humidLastData; ?>%</span>
+                                <?php } else if($soil_humidLastData < 60 && isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $soil_humidLastData; ?>%</span>
+                                <?php } else if($soil_humidLastData > 80 && !isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $soil_humidLastData; ?>%</span>
+                                <?php } else if($soil_humidLastData < 70 && !isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $soil_humidLastData; ?>%</span>
+                                <?php } else { ?>
+                                    <span><?php echo $soil_humidLastData; ?>%</span>
+                                <?php } ?>
+                            </div>
                             <div class="stats-meta text-success">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
-                                </svg> 2.7%</div>
+                                <?php echo $soil_humidLastUpdate; ?>
+                            </div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
                     </div><!--//app-card-->
@@ -40,11 +66,23 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Nhiệt độ</h4>
-                            <div class="stats-figure">28.4&deg;C</div>
+                            <div class="stats-figure">
+                                <?php if($tempLastData > 27 && isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $tempLastData; ?>&deg;C</span>
+                                <?php } else if($tempLastData < 21 && isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $tempLastData; ?>&deg;C</span>
+                                <?php } else if($tempLastData > 18 && !isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $tempLastData; ?>&deg;C</span>
+                                <?php } else if($tempLastData < 16 && !isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $tempLastData; ?>&deg;C</span>
+                                <?php } else { ?>
+                                    <span><?php echo $tempLastData; ?>&deg;C</span>
+                                <?php } ?>
+                            </div>
+
                             <div class="stats-meta text-success">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-                                </svg> 5&deg;C </div>
+                                <?php echo $tempLastUpdate; ?>
+                            </div>
                             </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
                     </div><!--//app-card-->
@@ -53,8 +91,18 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ sáng</h4>
-                            <div class="stats-figure">112</div>
-                            <div class="stats-meta">Bình thường</div>
+                            <div class="stats-figure">
+                                <?php if($lightLastData > 3000 && isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $lightLastData; ?> Lux</span>
+                                <?php } else if($lightLastData < 2000 && !isDaytime()) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $lightLastData; ?> Lux</span>
+                                <?php } else { ?>
+                                    <span style="font-weight:bold"><?php echo $lightLastData; ?> Lux</span>
+                                <?php } ?>
+                            </div>
+                            <div class="stats-meta text-success">
+                                <?php echo $lightLastUpdate; ?>
+                            </div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
                     </div><!--//app-card-->
@@ -63,8 +111,18 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ ẩm không khí</h4>
-                            <div class="stats-figure">82.3%</div>
-                            <div class="stats-meta">Bình thường</div>
+                            <div class="stats-figure">
+                                <?php if($air_humidLastData > 60) { ?>
+                                    <span style="font-weight:bold;color:red"><?php echo $air_humidLastData; ?>%</span>
+                                <?php } else if($air_humidLastData < 45) { ?>
+                                    <span style="font-weight:bold;color:blue"><?php echo $air_humidLastData; ?>%</span>
+                                <?php } else { ?>
+                                    <span><?php echo $air_humidLastData; ?>%</span>
+                                <?php } ?>
+                            </div>
+                            <div class="stats-meta text-success">
+                                <?php echo $air_humidLastUpdate; ?>
+                            </div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
                     </div><!--//app-card-->
@@ -138,4 +196,7 @@
 <!-- Charts JS -->
 <script src="public/assets/plugins/chart.js/chart.min.js"></script> 
 <script src="public/assets/js/index-charts.js"></script> 
+
+<script type="text/javascript"  src="public/assets/js/script.js"></script>
+
 
