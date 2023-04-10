@@ -62,7 +62,7 @@
 										        </div>
 									        </div><!--//col-->
 								        </div><!--//row-->
-								        <a class="link-mask" href="notifications.html"></a>
+								        <a class="link-mask" href=""></a>
 							       </div><!--//item-->
 							       <div class="item p-3">
 								        <div class="row gx-2 justify-content-between align-items-center">
@@ -76,7 +76,7 @@
 										        </div>
 									        </div><!--//col-->
 								        </div><!--//row-->
-								        <a class="link-mask" href="notifications.html"></a>
+								        <a class="link-mask" href=<?php echo _WEB_ROOT."/home/setting";?>></a>
 							       </div><!--//item-->
 							       <div class="item p-3">
 								        <div class="row gx-2 justify-content-between align-items-center">

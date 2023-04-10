@@ -128,6 +128,7 @@
                     </div><!--//app-card-->
                 </div><!--//col-->
             </div><!--//row-->
+            <!-- CHART 1,2 -->
             <div class="row g-4 mb-4">
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-chart h-100 shadow-sm">
@@ -153,7 +154,7 @@
                         </div><!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
                             <div class="chart-container">
-                                <canvas id="canvas-linechart" ></canvas>
+                                <canvas id="canvas-linechart"></canvas>
                             </div>
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
@@ -183,7 +184,70 @@
                         </div><!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
                             <div class="chart-container">
-                                <canvas id="canvas-barchart" ></canvas>
+                                <canvas id="canvas-barchart"></canvas>
+                            </div>
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div><!--//col-->  
+            </div><!--//row-->
+
+            <!-- CHART 3,4 -->
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-lg-6">
+                    <div class="app-card app-card-chart h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Độ sáng</h4>
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <div class="mb-3 d-flex">   
+                                        <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
+                                            <option value="1" selected>Khu vực 1</option>
+                                            <option value="2">Khu vực 2</option>
+                                            <option value="3">Khu vực 3</option>
+                                            <option value="4">Khu vực 4</option>
+                                            <option value="5">Khu vực 5</option>
+                                            <option value="6">Khu vực 6</option>
+                                            <option value="7">Khu vực 7</option>
+                                        </select>
+                                    </div>
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="chart-container">
+                                <canvas id="canvas-linechart-2"></canvas>
+                            </div>
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+
+                <div class="col-12 col-lg-6">
+                    <div class="app-card app-card-chart h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Độ ẩm không khí</h4>
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <div class="mb-3 d-flex">   
+                                        <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
+                                            <option value="1" selected>Khu vực 1</option>
+                                            <option value="2">Khu vực 2</option>
+                                            <option value="3">Khu vực 3</option>
+                                            <option value="4">Khu vực 4</option>
+                                            <option value="5">Khu vực 5</option>
+                                            <option value="6">Khu vực 6</option>
+                                            <option value="7">Khu vực 7</option>
+                                        </select>
+                                    </div>
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="chart-container">
+                                <canvas id="canvas-barchart-2"></canvas>
                             </div>
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
