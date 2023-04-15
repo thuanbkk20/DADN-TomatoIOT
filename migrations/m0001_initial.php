@@ -11,9 +11,11 @@ class m0001_initial{
             id INT PRIMARY KEY AUTO_INCREMENT,
             username varchar(50) not null,
             password varchar(100) not null,
-            name varchar(50) not null,
-            phone_number varchar(50) not null,
-            role varchar(50) not null
+            last_name varchar(50) not null,
+            first_name varchar(19) not null,
+            phone_number varchar(10) not null,
+            role varchar(10) default '',
+	        image varchar(50) default ''
         );
        
         DROP TABLE IF EXISTS sensor;

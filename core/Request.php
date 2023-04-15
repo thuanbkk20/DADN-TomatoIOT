@@ -109,6 +109,13 @@ class Request{
                         }
                     }
 
+                    if($ruleName == 'length'){
+                        if(strlen(trim($dataFields[$fieldName]))!=$ruleValue){
+                            $checkValidate = false;
+                            $this->setErrors($fieldName, $ruleName);
+                        }
+                    }
+
                     if($ruleName == 'email'){
                         if(!filter_var($dataFields[$fieldName],FILTER_VALIDATE_EMAIL)){
                             $checkValidate = false;
