@@ -73,7 +73,7 @@
     </div>
 
     <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
-        <!-- <?php echo "<img src='"._ROOT."/public/assets/images/background/background-2.jpg'>";?> -->
+        <?php echo "<img style='position:absolute;width:100%;height:100%;left:0;top:0;z-index:10;' src='"._ROOT."/public/assets/images/background/background-tomato-2.jpg'>";?>
         <div class="auth-background-mask"></div>
         <div class="auth-background-overlay p-3 p-lg-5">
             <div class="d-flex flex-column align-content-end h-100">
