@@ -38,8 +38,6 @@ class Home extends Controller{
         $this->data['sub_content']['page_title'] = "Dashboard";
         $this->data["content"] = 'dashboard/dashboard';
 
-        // echo '<pre>'; print_r($this->data['sub_content']);echo '</pre>';
-
         $this->render('layouts/basic_layout', $this->data);
     }
 
