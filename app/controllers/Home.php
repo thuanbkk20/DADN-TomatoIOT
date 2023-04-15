@@ -27,9 +27,6 @@ class Home extends Controller{
         //Thay doi giua che do bang tay va auto (0 la che do bang tay)
         $status = $this->aio->getFeed('status','status');
 
-
-
-        
         $this->data['sub_content']['air_humidLastData'] = $air_humidFeed->getLastData();
         $this->data['sub_content']['air_humidLastUpdate'] = $air_humidFeed->getLastUpdate();
         $this->data['sub_content']['lightLastData'] = $lightFeed->getLastData();
@@ -62,9 +59,30 @@ class Home extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    public function light(){
-        $this->data['sub_content']['page_title'] = "Ánh sáng - Chi tiết";
-        $this->data["content"] = 'dashboard/light';
+    public function device_notify(){
+        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+        $this->data["content"] = 'dashboard/device_notify';
+        $this->render('layouts/basic_layout', $this->data);
+    }
+
+    public function device_manage(){
+        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+        $this->data["content"] = 'dashboard/device_manage';
+        $this->render('layouts/basic_layout', $this->data);
+    }
+    public function setting(){
+        $this->data['sub_content']['page_title'] = "Cài đặt - Chi tiết";
+        $this->data["content"] = 'dashboard/setting';
+        $this->render('layouts/basic_layout', $this->data);
+    }
+    public function account(){
+        $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
+        $this->data["content"] = 'dashboard/account';
+        $this->render('layouts/basic_layout', $this->data);
+    }
+    public function history(){
+        $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
+        $this->data["content"] = 'dashboard/history';
         $this->render('layouts/basic_layout', $this->data);
     }
 }

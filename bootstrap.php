@@ -5,10 +5,13 @@ define('_DIR_ROOT', __DIR__);
 //Xu li http root
 if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){
     $web_root = "https://".$_SERVER['HTTP_HOST'];
+    $root = "https://localhost:3000";
 }else{
     $web_root = "http://".$_SERVER['HTTP_HOST'];
+    $root = "http://localhost:3000";
 }
 define('_WEB_ROOT',$web_root);
+define('_ROOT',$root);
 /*
 ** Tu dong load configs
 */
