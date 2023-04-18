@@ -90,7 +90,7 @@ class soilHumid extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    private function autoPump(){
+    public function autoPump(){
         $soil_humidFeed = $this->aio->getFeed('SOIL_HUMID','soil-humid');
         $auto_pumpFeed = $this->aio->getFeed('auto_pump','auto-pump');
 
@@ -106,10 +106,14 @@ class soilHumid extends Controller{
             $auto_pumpFeed->send(2);
             //Cập nhật mức quạt vào cơ sở dữ liệu
             $this->db->query("UPDATE equipment SET level ='2' WHERE id = '2';");
+            $data['pumpLevel'] = 2;
         }else{
             $auto_pumpFeed->send(0);
             $this->db->query("UPDATE equipment SET level ='0' WHERE id = '2';");
+            $data['pumpLevel'] = 0;
         }
+        $data['soilHumid'] = $soil_humidLastData;
+        file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumid.json',json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
 }

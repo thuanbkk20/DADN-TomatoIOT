@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
 <div style="width:70%;float:right;">
 <h2>Dữ liệu để mọi người dễ xem, chỉnh giao diện xong có thể xóa đoạn này</h2>
 <?php
@@ -20,7 +21,7 @@
         foreach($value['pump'] as $pump){
             echo '<tr>';
             echo '<td>Khu vực '.$key.'</td>';
-            echo '<td>'.$value['envIndex']['value'].'</td>';
+            echo '<td id="soilHumid">'.$value['envIndex']['value'].'</td>';
             echo '<td>'.$pump['name'].'</td>';
             if($pumpAutoMode == 0){
                 echo "<td><form method='post' action='"._WEB_ROOT."/soilHumid'>";
@@ -34,7 +35,7 @@
                 echo "</select>";    
                 echo "<button name='updatePump' type='submit'>Xác nhận</button></form></td>";
             }else{
-                echo '<td>'.$pump['level'].'</td>';
+                echo '<td id="pumpLevel">'.$pump['level'].'</td>';
             }
             echo '<td>';
             echo '</td></tr>';
@@ -55,10 +56,12 @@
         <label for="mode">
             Chọn chế độ bơm
         </label>
-        <select name="pumpMode">
+        <select id="pumpMode" name="pumpMode">
             <option value='1'>Tự động</option>
             <option value='0'>Bằng tay</option>
         </select>
         <button name="updateMode" type="submit">Xác nhận</button>
     </form>
 </div>
+<input type="hidden" id="webRoot" value=<?php echo _WEB_ROOT; ?>>
+<script src=<?php echo _WEB_ROOT."/public/assets/js/soilHumid.js";?>></script>

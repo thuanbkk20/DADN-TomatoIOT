@@ -87,7 +87,7 @@ class temperature extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    private function autoFan(){
+    public function autoFan(){
         $tempFeed = $this->aio->getFeed('TEMP','temp');
         $auto_fanFeed = $this->aio->getFeed('auto_fan','auto-fan');
         $max_value = $this->model['SensorSetting']->getMaxValue('temperature','day_mode',$this->isDaytime());
@@ -100,11 +100,15 @@ class temperature extends Controller{
             $auto_fanFeed->send(2);
             //Cập nhật mức quạt vào cơ sở dữ liệu
             $this->db->query("UPDATE equipment SET level ='2' WHERE id = '1';");
+            $data['fanLevel'] = 2;
         }else{
             $auto_fanFeed->send(0);
             //Cập nhật mức quạt vào cơ sở dữ liệu
             $this->db->query("UPDATE equipment SET level ='0' WHERE id = '1';");
+            $data['fanLevel'] = 0;
         }
+        $data['temp'] = $tempLastData;
+        file_put_contents(_DIR_ROOT.'/public/assets/json/temperature.json',json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
     public function isDaytime() {
