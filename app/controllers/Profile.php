@@ -1,10 +1,10 @@
 <?php
-class Profile extends Controller{
+class profile extends Controller{
     public $data = [], $model = [];
 
     public function __construct(){
         $this->model['userModel'] = $this->model("UserModel");
-        $data['user'] = [];
+        $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
         if(Session::data('user_id')!=null){
             $this->db = new Database();
@@ -109,7 +109,6 @@ class Profile extends Controller{
         $this->data['sub_content']['errors'] = Session::Flash('errors');
         $this->data['sub_content']['msg'] = Session::Flash('msg');
         $this->data['sub_content']['old'] = Session::Flash('old');
-        $this->data['page_title'] = "IcedRoast - Profile";
         $this->data['sub_content']['user'] = $this->data['user'];
         $this->data["content"] = 'profile/change_password';
         $this->render('layouts/basic_layout', $this->data);

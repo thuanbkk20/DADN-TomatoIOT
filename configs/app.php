@@ -1,7 +1,7 @@
 <?php
 $config['app'] = [
     // 'routeMiddleware' => [
-    //     'home' => AuthMiddleware::class
+    //     'admin' => AuthMiddleware::class
     // ],
     'globalMiddleware' => [
         ParamsMiddleware::class

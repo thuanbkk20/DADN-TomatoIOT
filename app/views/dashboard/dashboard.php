@@ -264,3 +264,17 @@
 <script type="text/javascript"  src="public/assets/js/script.js"></script>
 
 
+<div style="width:70%;float:right">
+            <?php 
+                echo "Cận trên và cận dưới của các trường dữ liệu để bạn làm dashboard so sánh, có thể xóa đoạn sao khi dùng xong";
+                echo "Các trường này đã được tính dựa theo greenMode và thời gian, có thể lấy để so sánh trực tiếp với dữ liệu của sensor";
+                echo '<pre>$air_humid';
+                echo '<pre>';print_r($air_humid);echo '</pre>';
+                echo '$soil_humid';
+                echo '<pre>';print_r($soil_humid);echo '</pre>';
+                echo '$temperature';
+                echo '<pre>';print_r($temperature);echo '</pre>';
+                echo '$light';
+                echo '<pre>';print_r($light);echo '</pre>';
+            ?>
+</div>
