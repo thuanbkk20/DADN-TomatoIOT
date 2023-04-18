@@ -22,7 +22,6 @@ class m0001_initial{
         CREATE TABLE sensor(
             id INT PRIMARY KEY AUTO_INCREMENT,
             type varchar(50) not null,
-		setting INT not null,
             last_sent_data TIMESTAMP not null,
             area INT not null
         );
@@ -57,18 +56,26 @@ class m0001_initial{
             max_value int not null,
             min_value int not null,
             user_id INT not null,
-		green_mode INT default 0,
-		day_mode INT default 0,
+		    green_mode INT default 0,
+		    day_mode INT default 0,
             time TIMESTAMP not null
         );
        
         DROP TABLE IF EXISTS env_index;
         CREATE TABLE env_index(
-            sensor_id INT PRIMARY KEY AUTO_INCREMENT,
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            sensor_id INT,
             time TIMESTAMP not null,
             value int not null
         );
-       
+
+        DROP TABLE IF EXISTS mode;
+        CREATE TABLE mode(
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            modeName varchar(20),
+            value INT default 0
+        );
+
         ALTER TABLE env_index
         ADD FOREIGN KEY (sensor_id) REFERENCES sensor(id);
        
@@ -79,10 +86,7 @@ class m0001_initial{
         ADD FOREIGN KEY (area) REFERENCES area(id);
        
         ALTER TABLE sensor
-        ADD FOREIGN KEY (area) REFERENCES area(id);
-       
-        ALTER TABLE sensor
-        ADD FOREIGN KEY (setting) REFERENCES setting(id);";
+        ADD FOREIGN KEY (area) REFERENCES area(id);";
 
         $db->query($sql);
     }

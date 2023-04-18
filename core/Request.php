@@ -95,6 +95,20 @@ class Request{
                         }
                     }
 
+                    if($ruleName == 'min_val'){
+                        if((float)trim($dataFields[$fieldName])<(float)$ruleValue){
+                            $checkValidate = false;
+                            $this->setErrors($fieldName, $ruleName);
+                        }
+                    }
+
+                    if($ruleName == 'max_val'){
+                        if((float)trim($dataFields[$fieldName])>(float)$ruleValue){
+                            $checkValidate = false;
+                            $this->setErrors($fieldName, $ruleName);
+                        }
+                    }
+
                     if($ruleName == 'min'){
                         if(strlen(trim($dataFields[$fieldName]))<$ruleValue){
                             $checkValidate = false;
@@ -125,6 +139,13 @@ class Request{
                     
                     if($ruleName == 'match'){
                         if(trim($dataFields[$fieldName])!= trim($dataFields[$ruleValue])){
+                            $checkValidate = false;
+                            $this->setErrors($fieldName,$ruleName);
+                        }
+                    }
+
+                    if($ruleName == 'bigger'){
+                        if((float)trim($dataFields[$fieldName]) <= (float)trim($dataFields[$ruleValue])){
                             $checkValidate = false;
                             $this->setErrors($fieldName,$ruleName);
                         }

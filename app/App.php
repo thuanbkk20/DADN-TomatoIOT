@@ -25,7 +25,6 @@ class App{
             $dbObject = new DB();
             $this->__db = $dbObject->db;
         }
-
         $this -> handleUrl();
     }
 
