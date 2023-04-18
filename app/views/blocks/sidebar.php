@@ -71,7 +71,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item has-submenu">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href=<?php echo _WEB_ROOT."/home/setting";?>>
+                    <a class="nav-link" href=<?php echo _WEB_ROOT."/admin/setting";?>>
                         <span class="nav-icon">
                             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

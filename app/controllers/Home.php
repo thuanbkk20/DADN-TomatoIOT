@@ -82,32 +82,32 @@ class home extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    // public function device_notify(){
-    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-    //     $this->data["content"] = 'dashboard/device_notify';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
+    public function device_notify(){
+        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+        $this->data["content"] = 'dashboard/device_notify';
+        $this->render('layouts/basic_layout', $this->data);
+    }
 
-    // public function device_manage(){
-    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-    //     $this->data["content"] = 'dashboard/device_manage';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
+    public function device_manage(){
+        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+        $this->data["content"] = 'dashboard/device_manage';
+        $this->render('layouts/basic_layout', $this->data);
+    }
     // public function setting(){
     //     $this->data['sub_content']['page_title'] = "Cài đặt - Chi tiết";
     //     $this->data["content"] = 'dashboard/setting';
     //     $this->render('layouts/basic_layout', $this->data);
     // }
-    // public function account(){
-    //     $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
-    //     $this->data["content"] = 'dashboard/account';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
-    // public function history(){
-    //     $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
-    //     $this->data["content"] = 'dashboard/history';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
+    public function account(){
+        $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
+        $this->data["content"] = 'dashboard/account';
+        $this->render('layouts/basic_layout', $this->data);
+    }
+    public function history(){
+        $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
+        $this->data["content"] = 'dashboard/history';
+        $this->render('layouts/basic_layout', $this->data);
+    }
 
     //
 

@@ -22,19 +22,6 @@
             <h1 style="text-align: center">Light data:<?php echo $lightLastData; ?></h1>
             <h1 style="text-align: center">Light Last update:<?php echo $lightLastUpdate; ?></h1> -->
 
-            <?php
-                $tempLastUpdate = date('H:i:s - d/m/Y');
-                $air_humidLastUpdate = date('H:i:s - d/m/Y');
-                $soil_humidLastUpdate = date('H:i:s - d/m/Y');
-                $lightLastUpdate = date('H:i:s - d/m/Y');
-
-                function isDaytime() {
-                    date_default_timezone_set('Asia/Ho_Chi_Minh'); // Đặt múi giờ theo định dạng của bạn
-                    $hour = (int) date('H'); // Lấy giờ hiện tại (định dạng 24 giờ)
-                    return $hour >= 6 && $hour < 18; // Kiểm tra xem giờ hiện tại có nằm trong khoảng thời gian ban ngày hay không
-                }                
-            ?>
-
             <div class="row g-4 mb-4">
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
@@ -42,13 +29,9 @@
                             <h4 class="stats-type mb-1">Độ ẩm đất</h4>
                             <div class="stats-figure">
                                 <!-- CHƯA CHỈNH SỬA THEO CHẾ ĐỘ RA HOA KẾT QUẢ HAY CÒN XANH - BẢN DEMO TẠM THEO NGÀY ĐÊM -->
-                                <?php if($soil_humidLastData > 70 && isDaytime()) { ?>
+                                <?php if($soil_humidLastData > $soil_humid["max_value"]) { ?>
                                     <span style="font-weight:bold;color:red"><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } else if($soil_humidLastData < 60 && isDaytime()) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } else if($soil_humidLastData > 80 && !isDaytime()) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } else if($soil_humidLastData < 70 && !isDaytime()) { ?>
+                                <?php } else if($soil_humidLastData < $soil_humid["min_value"]) { ?>
                                     <span style="font-weight:bold;color:blue"><?php echo $soil_humidLastData; ?>%</span>
                                 <?php } else { ?>
                                     <span><?php echo $soil_humidLastData; ?>%</span>
@@ -67,16 +50,12 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Nhiệt độ</h4>
                             <div class="stats-figure">
-                                <?php if($tempLastData > 27 && isDaytime()) { ?>
+                                <?php if($tempLastData > $temperature["max_value"]) { ?>
                                     <span style="font-weight:bold;color:red"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } else if($tempLastData < 21 && isDaytime()) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } else if($tempLastData > 18 && !isDaytime()) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } else if($tempLastData < 16 && !isDaytime()) { ?>
+                                <?php } else if($tempLastData < $temperature["min_value"]) { ?>
                                     <span style="font-weight:bold;color:blue"><?php echo $tempLastData; ?>&deg;C</span>
                                 <?php } else { ?>
-                                    <span><?php echo $tempLastData; ?>&deg;C</span>
+                                    <span style="font-weight:bold"><?php echo $tempLastData; ?>&deg;C</span>
                                 <?php } ?>
                             </div>
 
@@ -92,9 +71,9 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ sáng</h4>
                             <div class="stats-figure">
-                                <?php if($lightLastData > 3000 && isDaytime()) { ?>
+                                <?php if($lightLastData > $light["max_value"]) { ?>
                                     <span style="font-weight:bold;color:red"><?php echo $lightLastData; ?> Lux</span>
-                                <?php } else if($lightLastData < 2000 && !isDaytime()) { ?>
+                                <?php } else if($lightLastData < $light["min_value"]) { ?>
                                     <span style="font-weight:bold;color:blue"><?php echo $lightLastData; ?> Lux</span>
                                 <?php } else { ?>
                                     <span style="font-weight:bold"><?php echo $lightLastData; ?> Lux</span>
@@ -112,9 +91,9 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ ẩm không khí</h4>
                             <div class="stats-figure">
-                                <?php if($air_humidLastData > 60) { ?>
+                                <?php if($air_humidLastData > $air_humid["max_value"]) { ?>
                                     <span style="font-weight:bold;color:red"><?php echo $air_humidLastData; ?>%</span>
-                                <?php } else if($air_humidLastData < 45) { ?>
+                                <?php } else if($air_humidLastData < $air_humid["min_value"]) { ?>
                                     <span style="font-weight:bold;color:blue"><?php echo $air_humidLastData; ?>%</span>
                                 <?php } else { ?>
                                     <span><?php echo $air_humidLastData; ?>%</span>
@@ -263,18 +242,4 @@
 
 <script type="text/javascript"  src="public/assets/js/script.js"></script>
 
-
-<div style="width:70%;float:right">
-            <?php 
-                echo "Cận trên và cận dưới của các trường dữ liệu để bạn làm dashboard so sánh, có thể xóa đoạn sao khi dùng xong";
-                echo "Các trường này đã được tính dựa theo greenMode và thời gian, có thể lấy để so sánh trực tiếp với dữ liệu của sensor";
-                echo '<pre>$air_humid';
-                echo '<pre>';print_r($air_humid);echo '</pre>';
-                echo '$soil_humid';
-                echo '<pre>';print_r($soil_humid);echo '</pre>';
-                echo '$temperature';
-                echo '<pre>';print_r($temperature);echo '</pre>';
-                echo '$light';
-                echo '<pre>';print_r($light);echo '</pre>';
-            ?>
 </div>
