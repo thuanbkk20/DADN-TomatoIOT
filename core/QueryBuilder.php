@@ -55,7 +55,7 @@ trait QueryBuilder{
     }
 
     //ORDER BY id DESC
-    public function orderBy($field, $type = "ASC"){
+    public function orderBy($field, $type = "DESC"){
         $fieldArr = array_filter(explode(',',$field));
         if(!empty($fieldArr) && count($fieldArr)>=2){
             //SQL order by mul
