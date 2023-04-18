@@ -87,4 +87,9 @@ class Home extends Controller{
         $this->data["content"] = 'dashboard/history';
         $this->render('layouts/basic_layout', $this->data);
     }
+	public function manual(){
+		$this->data['sub_content']['page_title'] = "Chỉnh tay - Chi tiết";
+		$this->data["content"] = 'dashboard/outputManual';
+		$this->render('layouts/basic_layout', $this->data);
+	}
 }

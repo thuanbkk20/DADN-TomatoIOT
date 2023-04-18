@@ -49,7 +49,7 @@ trait QueryBuilder{
         return $this;
     }
 
-    public function limit($offset = 0, $number){
+    public function limit($number, $offset = 0){
         $this->limit = " LIMIT $offset, $number";
         return $this;
     }
