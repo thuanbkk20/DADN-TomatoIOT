@@ -1,8 +1,10 @@
 <h1>Hồ Sơ Của Tôi</h1>
 <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+<div style="width:70%; float:right;">
 <form method="post" action="<?php echo _WEB_ROOT; ?>/profile">
     <div>
-        Tên đăng nhập: <?php echo $user['username'];?>
+        <p>Tên đăng nhập: <?php echo $user['username'];?></p>
+        <p>Vai trò: <?php echo $user['role'];?></p>
     </div>
     <div>
         <label for="first_name">Tên</label>
@@ -30,3 +32,4 @@
     </div>
     <button type="submit">Lưu</button>
 </form>
+</div>
