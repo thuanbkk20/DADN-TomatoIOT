@@ -277,3 +277,8 @@ class setting extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 }
+
+
+
+
+
