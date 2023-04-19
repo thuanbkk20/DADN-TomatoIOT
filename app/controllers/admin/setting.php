@@ -89,6 +89,7 @@ class setting extends Controller{
         $this->data['sub_content']['min_value2'] = $this->model['SensorSetting']->getMinValue('temperature','day_mode',0);
         $this->data['sub_content']['max_value2'] = $this->model['SensorSetting']->getMaxValue('temperature','day_mode',0);
 
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->data["content"] = 'setting/temperature';
         $this->render('layouts/basic_layout', $this->data);
     }
@@ -163,6 +164,7 @@ class setting extends Controller{
         $this->data['sub_content']['min_value2'] = $this->model['SensorSetting']->getMinValue('soil_humid','green_mode',0);
         $this->data['sub_content']['max_value2'] = $this->model['SensorSetting']->getMaxValue('soil_humid','green_mode',0);
 
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->data["content"] = 'setting/soil_humid';
         $this->render('layouts/basic_layout', $this->data);
     }
@@ -218,6 +220,7 @@ class setting extends Controller{
         $this->data['sub_content']['min_value1'] = $this->model['SensorSetting']->getMinValue('air_humid','day_mode',0);
         $this->data['sub_content']['max_value1'] = $this->model['SensorSetting']->getMaxValue('air_humid','day_mode',0);
 
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->data["content"] = 'setting/air_humid';
         $this->render('layouts/basic_layout', $this->data);
     }
@@ -273,6 +276,7 @@ class setting extends Controller{
         $this->data['sub_content']['min_value1'] = $this->model['SensorSetting']->getMinValue('light','day_mode',0);
         $this->data['sub_content']['max_value1'] = $this->model['SensorSetting']->getMaxValue('light','day_mode',0);
 
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->data["content"] = 'setting/light';
         $this->render('layouts/basic_layout', $this->data);
     }

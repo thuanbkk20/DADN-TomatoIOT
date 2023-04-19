@@ -8,6 +8,7 @@ class temperature extends Controller{
         $this->model['TemperatureModel'] = $this->model("TemperatureModel"); 
         $this->model['EnvModel'] = $this->model("EnvModel");
         $this->model['SensorSetting'] = $this->model("SensorSetting");
+        $this->model['Log'] = $this->model("Log");
         $this->aio = new AdaFruitIO();
         $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
@@ -84,6 +85,7 @@ class temperature extends Controller{
         }
 
         $this->data["content"] = 'manage/temperature';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 
@@ -96,16 +98,29 @@ class temperature extends Controller{
         $tempLastUpdate = date('y/m/d H:i:s',strtotime($tempFeed->getLastUpdate()));
         //Cập nhật giá trị nhiệt độ gần nhất vào cơ sở dữ liệu
         $this->model['EnvModel']->addData(1,$tempLastUpdate,$tempLastData);
+        //Lấy dữ mức quạt hiện tại
+        $query = $this->db->query("SELECT * FROM equipment WHERE id = '1';");
+        $currentLevel = $query->fetch(PDO::FETCH_ASSOC)['level'];
         if($tempLastData > $max_value){
             $auto_fanFeed->send(2);
-            //Cập nhật mức quạt vào cơ sở dữ liệu
-            $this->db->query("UPDATE equipment SET level ='2' WHERE id = '1';");
-            $data['fanLevel'] = 2;
+            if($currentLevel!=2){
+                //Cập nhật mức quạt vào cơ sở dữ liệu
+                $this->db->query("UPDATE equipment SET level ='2' WHERE id = '1';");
+                $data['fanLevel'] = 2;
+                //Thêm log
+                $mgs = "Quạt máy 1 ở khu vực 1 đã tự động bật mức 2 do nhiệt độ vượt ngưỡng";
+                $this->model['Log']->addLog($mgs);
+            }
         }else{
             $auto_fanFeed->send(0);
-            //Cập nhật mức quạt vào cơ sở dữ liệu
-            $this->db->query("UPDATE equipment SET level ='0' WHERE id = '1';");
-            $data['fanLevel'] = 0;
+            if($currentLevel!=0){
+                //Cập nhật mức quạt vào cơ sở dữ liệu
+                $this->db->query("UPDATE equipment SET level ='0' WHERE id = '1';");
+                $data['fanLevel'] = 0;
+                //Thêm log
+                $mgs = "Quạt máy 1 ở khu vực 1 đã tự động tắt do nhiệt độ về mức bình thường";
+                $this->model['Log']->addLog($mgs);
+            }
         }
         $data['temp'] = $tempLastData;
         file_put_contents(_DIR_ROOT.'/public/assets/json/temperature.json',json_encode($data,JSON_UNESCAPED_UNICODE));

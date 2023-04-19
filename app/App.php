@@ -5,7 +5,7 @@ class App{
     public static $app;
     
     public function __construct(){
-
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
         global $routes, $config;
 
         self::$app = $this;

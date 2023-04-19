@@ -19,6 +19,7 @@ class userModify extends Controller{
         $this->data['sub_content']['user'] = $this->data['user'];
         $this->data['sub_content']['userArr'] = $data;
         $this->data["content"] = 'user/list';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 
@@ -93,6 +94,7 @@ class userModify extends Controller{
         //Thông tin user
         $this->data['sub_content']['user'] = $this->data['user'];
         $this->data["content"] = 'user/add';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 
@@ -169,6 +171,7 @@ class userModify extends Controller{
         $this->data['sub_content']['user'] = $this->data['user'];
         if(isset($_GET['id'])) $this->data['sub_content']['userToUpdate'] = $this->model['userModel']->getUser($_GET['id']);
         $this->data["content"] = 'user/update';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 

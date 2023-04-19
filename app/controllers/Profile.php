@@ -47,7 +47,7 @@ class profile extends Controller{
                 $new_user['phone_number'] = $_POST['phone_number'];
 
                 //Update user
-                $this->model['userModel']->updateUser($new_user);
+                $this->model['userModel']->updateUser($this->data['user']['id'],$new_user);
 
                 $message = "Bạn đã thay đổi thông tin cá nhân thành công!";
                 $url = _WEB_ROOT."/profile";
@@ -67,6 +67,7 @@ class profile extends Controller{
         $this->data['sub_content']['old'] = Session::Flash('old');
         $this->data['sub_content']['user'] = $this->data['user'];
         $this->data["content"] = 'profile/info';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 
@@ -99,7 +100,7 @@ class profile extends Controller{
                 $new_user['password'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
                 //Update user
-                $this->model['userModel']->updateUser($new_user);
+                $this->model['userModel']->updateUser($this->data['user']['id'],$new_user);
 
                 $message = "Bạn đã thay đổi mật khẩu thành công!";
                 // Generate the JavaScript code for the popup alert and redirect
@@ -111,20 +112,7 @@ class profile extends Controller{
         $this->data['sub_content']['old'] = Session::Flash('old');
         $this->data['sub_content']['user'] = $this->data['user'];
         $this->data["content"] = 'profile/change_password';
-        $this->render('layouts/basic_layout', $this->data);
-    }
-
-    public function order(){
-        $this->data['page_title'] = "IcedRoast - Đơn hàng của bạn";
-        $this->data['sub_content']['user'] = $this->data['user'];
-        $this->data["content"] = 'profile/order';
-        $this->render('layouts/basic_layout', $this->data);
-    }
-
-    public function cart(){
-        $this->data['page_title'] = "IcedRoast - Đơn hàng của bạn";
-        $this->data['sub_content']['user'] = $this->data['user'];
-        $this->data["content"] = 'profile/cart';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 }

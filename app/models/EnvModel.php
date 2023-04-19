@@ -36,4 +36,54 @@ class EnvModel extends Model{
         $data['value'] = $value;
         $this->db->table($this->_table)->insert($data);
     }
+
+    function getSensorConnectInfo(){
+        $query = $this->db->query("SELECT time FROM env_index WHERE sensor_id = 1 ORDER BY time DESC");
+        $data['sensor1']['time'] = $query->fetch(PDO::FETCH_ASSOC)['time'];
+        $query = $this->db->query("SELECT time FROM env_index WHERE sensor_id = 2 ORDER BY time DESC");
+        $data['sensor2']['time'] = $query->fetch(PDO::FETCH_ASSOC)['time'];
+        $query = $this->db->query("SELECT time FROM env_index WHERE sensor_id = 3 ORDER BY time DESC");
+        $data['sensor3']['time'] = $query->fetch(PDO::FETCH_ASSOC)['time'];
+        $query = $this->db->query("SELECT time FROM env_index WHERE sensor_id = 4 ORDER BY time DESC");
+        $data['sensor4']['time'] = $query->fetch(PDO::FETCH_ASSOC)['time'];
+
+        $curTime = new DateTime();
+
+        $sensor1Time = DateTime::createFromFormat('Y-m-d H:i:s', $data['sensor1']['time'] );
+        $interval = $curTime->diff($sensor1Time);
+        $minutes = $interval->i + ($interval->h * 60);
+        if($minutes>2){
+            $data['sensor1']['connect'] = 'Ổn định';
+        }else{
+            $data['sensor1']['connect'] = 'Lỗi';
+        }
+
+        $sensor2Time = DateTime::createFromFormat('Y-m-d H:i:s', $data['sensor2']['time'] );
+        $interval = $curTime->diff($sensor2Time);
+        $minutes = $interval->i + ($interval->h * 60);
+        if($minutes>2){
+            $data['sensor2']['connect'] = 'Ổn định';
+        }else{
+            $data['sensor2']['connect'] = 'Lỗi';
+        }
+
+        $sensor3Time = DateTime::createFromFormat('Y-m-d H:i:s', $data['sensor3']['time'] );
+        $interval = $curTime->diff($sensor3Time);
+        $minutes = $interval->i + ($interval->h * 60);
+        if($minutes>2){
+            $data['sensor3']['connect'] = 'Ổn định';
+        }else{
+            $data['sensor3']['connect'] = 'Lỗi';
+        }
+
+        $sensor4Time = DateTime::createFromFormat('Y-m-d H:i:s', $data['sensor4']['time'] );
+        $interval = $curTime->diff($sensor4Time);
+        $minutes = $interval->i + ($interval->h * 60);
+        if($minutes>2){
+            $data['sensor4']['connect'] = 'Ổn định';
+        }else{
+            $data['sensor4']['connect'] = 'Lỗi';
+        }
+        return $data;
+    }
 }

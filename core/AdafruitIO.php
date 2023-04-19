@@ -3,7 +3,7 @@ class AdaFruitIO {
 	public $key;
 	public $url;
 	
-	public function __construct($key='', $url="http://io.adafruit.com"){
+	public function __construct($key='aio_YZFx025Dzcspu1oYg5N2l7qgDUGI', $url="http://io.adafruit.com"){
 		$this->key = $key;
 		$this->url = $url;
 	}
