@@ -1,6 +1,4 @@
-<?php 
-    //Thêm html của dashboard tại file này
-?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
 <!-- Set title -->
 <title><?=
     !empty($page_title)?$page_title:"No name"
@@ -29,15 +27,16 @@
                             <h4 class="stats-type mb-1">Độ ẩm đất</h4>
                             <div class="stats-figure">
                                 <!-- CHƯA CHỈNH SỬA THEO CHẾ ĐỘ RA HOA KẾT QUẢ HAY CÒN XANH - BẢN DEMO TẠM THEO NGÀY ĐÊM -->
-                                <?php if($soil_humidLastData > $soil_humid["max_value"]) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } else if($soil_humidLastData < $soil_humid["min_value"]) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } else { ?>
-                                    <span><?php echo $soil_humidLastData; ?>%</span>
-                                <?php } ?>
+                                <?php 
+                                    $flag = 0;
+                                    if ($soil_humidLastData > $soil_humid["max_value"]) $flag = 1;
+                                    if ($soil_humidLastData < $soil_humid["min_value"]) $flag = 2;
+                                ?>
+                                <span id='soilHumidLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
+                                    else if($flag==2) echo "style='font-weight:bold;color:blue'";
+                                ?>><?php echo $soil_humidLastData; ?>%</span>
                             </div>
-                            <div class="stats-meta text-success">
+                            <div id='soilHumidLastUpdate' class="stats-meta text-success">
                                 <?php echo $soil_humidLastUpdate; ?>
                             </div>
                         </div><!--//app-card-body-->
@@ -50,16 +49,17 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Nhiệt độ</h4>
                             <div class="stats-figure">
-                                <?php if($tempLastData > $temperature["max_value"]) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } else if($tempLastData < $temperature["min_value"]) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } else { ?>
-                                    <span style="font-weight:bold"><?php echo $tempLastData; ?>&deg;C</span>
-                                <?php } ?>
+                                <?php 
+                                    $flag = 0;
+                                    if ($tempLastData > $temperature["max_value"]) $flag = 1;
+                                    if ($tempLastData < $temperature["min_value"]) $flag = 2;
+                                ?>
+                                <span id='tempLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
+                                    else if($flag==2) echo "style='font-weight:bold;color:blue'";
+                                ?>><?php echo $tempLastData; ?>%</span>
                             </div>
 
-                            <div class="stats-meta text-success">
+                            <div id='tempLastUpdate' class="stats-meta text-success">
                                 <?php echo $tempLastUpdate; ?>
                             </div>
                             </div><!--//app-card-body-->
@@ -71,15 +71,16 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ sáng</h4>
                             <div class="stats-figure">
-                                <?php if($lightLastData > $light["max_value"]) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $lightLastData; ?> Lux</span>
-                                <?php } else if($lightLastData < $light["min_value"]) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $lightLastData; ?> Lux</span>
-                                <?php } else { ?>
-                                    <span style="font-weight:bold"><?php echo $lightLastData; ?> Lux</span>
-                                <?php } ?>
+                                <?php 
+                                    $flag = 0;
+                                    if ($lightLastData > $light["max_value"]) $flag = 1;
+                                    if ($lightLastData < $light["min_value"]) $flag = 2;
+                                ?>
+                                <span id='lightLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
+                                    else if($flag==2) echo "style='font-weight:bold;color:blue'";
+                                ?>><?php echo $lightLastData; ?>%</span>
                             </div>
-                            <div class="stats-meta text-success">
+                            <div id='lightLastUpdate' class="stats-meta text-success">
                                 <?php echo $lightLastUpdate; ?>
                             </div>
                         </div><!--//app-card-body-->
@@ -91,15 +92,16 @@
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Độ ẩm không khí</h4>
                             <div class="stats-figure">
-                                <?php if($air_humidLastData > $air_humid["max_value"]) { ?>
-                                    <span style="font-weight:bold;color:red"><?php echo $air_humidLastData; ?>%</span>
-                                <?php } else if($air_humidLastData < $air_humid["min_value"]) { ?>
-                                    <span style="font-weight:bold;color:blue"><?php echo $air_humidLastData; ?>%</span>
-                                <?php } else { ?>
-                                    <span><?php echo $air_humidLastData; ?>%</span>
-                                <?php } ?>
+                                <?php 
+                                    $flag = 0;
+                                    if ($air_humidLastData > $air_humid["max_value"]) $flag = 1;
+                                    if ($air_humidLastData < $air_humid["min_value"]) $flag = 2;
+                                ?>
+                                <span id='airHumidLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
+                                    else if($flag==2) echo "style='font-weight:bold;color:blue'";
+                                ?>><?php echo $air_humidLastData; ?>%</span>
                             </div>
-                            <div class="stats-meta text-success">
+                            <div id='airHumidLastUpdate' class="stats-meta text-success">
                                 <?php echo $air_humidLastUpdate; ?>
                             </div>
                         </div><!--//app-card-body-->
@@ -239,7 +241,11 @@
 <!-- Charts JS -->
 <script src="public/assets/plugins/chart.js/chart.min.js"></script> 
 <script src="public/assets/js/index-charts.js"></script> 
-
-<script type="text/javascript"  src="public/assets/js/script.js"></script>
-
 </div>
+
+<!-- Các trường input hidden phục vụ cho javascript -->
+<input type="hidden" id="pumpAutoMode" value=<?php echo $pumpAutoMode; ?>>
+<input type="hidden" id="fanAutoMode" value=<?php echo $fanAutoMode; ?>>
+<input type="hidden" id="webRoot" value=<?php echo _WEB_ROOT; ?>>
+
+<script type="text/javascript"  src=<?php echo _WEB_ROOT."/public/assets/js/dashboard.js";?>></script>

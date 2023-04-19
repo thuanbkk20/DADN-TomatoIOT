@@ -8,6 +8,7 @@ class soilHumid extends Controller{
         $this->model['SoilHumidModel'] = $this->model("SoilHumidModel"); 
         $this->model['EnvModel'] = $this->model("EnvModel");
         $this->model['SensorSetting'] = $this->model("SensorSetting");
+        $this->model['Log'] = $this->model("Log");
         $this->aio = new AdaFruitIO();
         $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
@@ -87,10 +88,11 @@ class soilHumid extends Controller{
         }
 
         $this->data["content"] = 'manage/soilHumid';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    private function autoPump(){
+    public function autoPump(){
         $soil_humidFeed = $this->aio->getFeed('SOIL_HUMID','soil-humid');
         $auto_pumpFeed = $this->aio->getFeed('auto_pump','auto-pump');
 
@@ -102,14 +104,33 @@ class soilHumid extends Controller{
         $soil_humidLastUpdate = date('y/m/d H:i:s',strtotime($soil_humidFeed->getLastUpdate()));
         //Cập nhật giá trị nhiệt độ gần nhất vào cơ sở dữ liệu
         $this->model['EnvModel']->addData(4,$soil_humidLastUpdate,$soil_humidLastData);
+
+        //Lấy dữ mức quạt hiện tại
+        $query = $this->db->query("SELECT * FROM equipment WHERE id = '2';");
+        $currentLevel = $query->fetch(PDO::FETCH_ASSOC)['level'];
         if($soil_humidLastData < $min_value){
             $auto_pumpFeed->send(2);
-            //Cập nhật mức quạt vào cơ sở dữ liệu
-            $this->db->query("UPDATE equipment SET level ='2' WHERE id = '2';");
+            if($currentLevel!=2){
+                //Cập nhật mức quạt vào cơ sở dữ liệu
+                $this->db->query("UPDATE equipment SET level ='2' WHERE id = '2';");
+                $data['pumpLevel'] = 2;
+                //Thêm log
+                $mgs = "Máy bơm 1 ở khu vực 1 đã tự động bật mức 2 do độ ẩm đất dưới ngưỡng";
+                $this->model['Log']->addLog($mgs);
+            }
         }else{
             $auto_pumpFeed->send(0);
-            $this->db->query("UPDATE equipment SET level ='0' WHERE id = '2';");
+            if($currentLevel!=0){
+                //Cập nhật mức quạt vào cơ sở dữ liệu
+                $this->db->query("UPDATE equipment SET level ='0' WHERE id = '2';");
+                $data['pumpLevel'] = 0;
+                //Thêm log
+                $mgs = "Máy bơm 1 ở khu vực 1 đã tự động tắt do độ ẩm đất trở về mức bình thường";
+                $this->model['Log']->addLog($mgs);
+            }
         }
+        $data['soilHumid'] = $soil_humidLastData;
+        file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumid.json',json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
 }

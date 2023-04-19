@@ -14,10 +14,11 @@
     <!-- App CSS -->  
     <?php echo "<link id='theme-style' rel='stylesheet' href='"._ROOT."/public/assets/css/portal.css'>";?>
     <!-- <link id="theme-style" rel="stylesheet" href="public/assets/css/portal.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
 </head> 
 <body>
     <?php
-        $this->render('blocks/header');
+        $this->render('blocks/header',$header_content);
         $this->render($content, $sub_content);
         $this->render('blocks/footer');
     ?>

@@ -21,7 +21,7 @@
         foreach($value['fan'] as $fan){
             echo '<tr>';
             echo '<td>Khu vực '.$key.'</td>';
-            echo '<td>'.$value['envIndex']['value'].'</td>';
+            echo '<td id="temp">'.$value['envIndex']['value'].'</td>';
             echo '<td>'.$fan['name'].'</td>';
             if($fanAutoMode == 0){
                 echo "<td><form method='post' action='"._WEB_ROOT."/temperature'>";
@@ -35,7 +35,7 @@
                 echo "</select>";    
                 echo "<button name='updatefan' type='submit'>Xác nhận</button></form></td>";
             }else{
-                echo '<td>'.$fan['level'].'</td>';
+                echo '<td id="fanLevel">'.$fan['level'].'</td>';
             }
             echo '<td>';
             echo '</td></tr>';
@@ -56,3 +56,5 @@
         <button name="updateMode" type="submit">Xác nhận</button>
     </form>
 </div>
+<input type="hidden" id="webRoot" value=<?php echo _WEB_ROOT; ?>>
+<script src=<?php echo _WEB_ROOT."/public/assets/js/temperature.js";?>></script>

@@ -24,7 +24,9 @@ class Log extends Model{
     }
 
     function getAll(){
-        $data = $this->db->select()->orderBy('id','DESC')->getAll();
+        $query = $this->db->query("SELECT * FROM log ORDER BY id DESC LIMIT 20");
+        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        // $data = $this->db->select()->orderBy('id','DESC')->getAll();
         return $data;
     }
 
@@ -32,5 +34,11 @@ class Log extends Model{
         $data['description'] = $mgs;
         $data['time'] = date('Y-m-d H:i:s');
         $this->db->table($this->_table)->insert($data);
+    }
+
+    public function get4Log(){
+        $query = $this->db->query("SELECT * FROM log ORDER BY id DESC LIMIT 4");
+        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
     }
 }
