@@ -7,6 +7,7 @@ class home extends Controller{
     {
         $this->model['EnvModel'] = $this->model("EnvModel"); 
         $this->model['SensorSetting'] = $this->model("SensorSetting");
+        $this->model['Log'] = $this->model('Log');
         $this->aio = new AdaFruitIO();
         $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
@@ -47,10 +48,10 @@ class home extends Controller{
         $tempLastUpdate = date('y/m/d H:i:s',strtotime($tempFeed->getLastUpdate()));
 
         //Lưu vào database
-        $this->model['EnvModel']->addData(1,$tempLastUpdate,$tempLastData);
-        $this->model['EnvModel']->addData(2,$lightLastUpdate,$lightLastData);
-        $this->model['EnvModel']->addData(3,$air_humidLastUpdate,$air_humidLastData);
-        $this->model['EnvModel']->addData(4,$soil_humidLastUpdate,$soil_humidLastData);
+        // $this->model['EnvModel']->addData(1,$tempLastUpdate,$tempLastData);
+        // $this->model['EnvModel']->addData(2,$lightLastUpdate,$lightLastData);
+        // $this->model['EnvModel']->addData(3,$air_humidLastUpdate,$air_humidLastData);
+        // $this->model['EnvModel']->addData(4,$soil_humidLastUpdate,$soil_humidLastData);
         
         //Dữ liệu để render ra dashboard
         $this->data['sub_content']['air_humidLastData'] = $air_humidLastData;

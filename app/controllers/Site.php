@@ -1,9 +1,10 @@
 <?php
 class site extends Controller{
-    public $data=[], $userModel;
+    public $data=[], $userModel, $model;
     public function __construct()
     {
         $this->userModel = $this->model("UserModel"); 
+        $this->model['Log'] = $this->model('Log');
         $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
         if(Session::data('user_id')!=null){

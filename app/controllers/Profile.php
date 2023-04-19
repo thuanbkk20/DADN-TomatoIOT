@@ -4,6 +4,7 @@ class profile extends Controller{
 
     public function __construct(){
         $this->model['userModel'] = $this->model("UserModel");
+        $this->model['Log'] = $this->model("Log");
         $this->data['user'] = [];
         //Lấy user để hiện thông tin trên header
         if(Session::data('user_id')!=null){
