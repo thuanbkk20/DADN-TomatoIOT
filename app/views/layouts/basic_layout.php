@@ -17,6 +17,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
 </head> 
 <body>
+    <input type="hidden" id="webroot" value=<?php echo _WEB_ROOT;?>>
+    <?php 
+        $query = $this->db->query("SELECT * FROM mode WHERE modeName = 'pumpAutoMode'");
+        $pumpAutoMode = $query->fetchAll(PDO::FETCH_ASSOC)[0]['value'];
+        $query = $this->db->query("SELECT * FROM mode WHERE modeName = 'fanAutoMode'");
+        $fanAutoMode = $query->fetchAll(PDO::FETCH_ASSOC)[0]['value'];
+    ?>
+    <input type="hidden" id="pumpAutoMode" value=<?php echo $pumpAutoMode;?>>
+    <input type="hidden" id="fanAutoMode" value=<?php echo $fanAutoMode;?>>
     <?php
         $this->render('blocks/header',$header_content);
         $this->render($content, $sub_content);
@@ -31,5 +40,7 @@
     <!-- Page Specific JS -->
     <?php echo "<script src='"._ROOT."/public/assets/js/app.js'></script>";?>
     <!-- <script src="/public/assets/js/app.js"></script>  -->
+    <!-- Script to check data get from adafruit server -->
+    <script type="text/javascript"  src=<?php echo _WEB_ROOT."/public/assets/js/checkData.js";?>></script>
 </body>
 </html>
