@@ -47,7 +47,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item has-submenu">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link submenu-toggle" href="" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
+                    <a class="nav-link submenu-toggle" href=<?php echo _WEB_ROOT."/equipment";?> data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
                         <span class="nav-icon">
                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-gear" viewBox="0 0 16 16">
