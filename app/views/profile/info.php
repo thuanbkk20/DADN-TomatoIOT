@@ -4,7 +4,12 @@
             <div class="container-xl" action="<?php echo _WEB_ROOT; ?>/profile">
                 <h1 class="app-page-title">Hồ sơ của tôi</h1>
                 <div class="row gy-4">
-                    <div class="col-12 col-lg-8">
+                    <div class="col-12 col-lg-2">
+                        <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+                        <?php echo "<img style='position:absolute;width:100%;height:100%;left:0;top:0;z-index:10;' src='"._ROOT."/public/assets/images/background/background-tomato-3.jpg'>";?>
+                        </div><!--//app-card-->
+                    </div>
+                    <div class="col-12 col-lg-6">
                         <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
                             <div class="app-card-header p-3 border-bottom-0">
                                 <div class="row align-items-center gx-3">
@@ -25,55 +30,66 @@
                                 <div class="item border-bottom py-3">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto">
+                                            <!-- add lastname -->
                                             <div class="item-label"><strong>Họ</strong></div>
-                                            <input type="text" name="last_name" placeholder="Ho ten..." 
+                                        </div><!--//col-->
+                                        <div class="col text-middle">
+                                            <input type="text" name="last_name" placeholder="Họ và tên đệm" 
                                             value="<?php echo empty($old['last_name'])?$user['last_name']:$old['last_name'];?>"></br>
                                             <span style="color: red">
-                                            <?php echo (empty($errors['last_name'])?false:$errors['last_name']); ?>
-                                            </span>
-                                        </div><!--//col-->
+                                                <?php echo (empty($errors['last_name'])?false:$errors['last_name']); ?>
+                                            </span> 
+                                        </div>
                                     </div><!--//row-->
                                 </div><!--//item-->
                                 <div class="item border-bottom py-3">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto">
+                                            <!-- add firstname -->
                                             <div class="item-label"><strong>Tên</strong></div>
+                                        </div><!--//col-->
+                                        <div class="col text-middle">
                                             <input type="text" name="first_name" placeholder="Tên" 
                                             value="<?php echo empty($old['first_name'])?$user['first_name']:$old['first_name'];?>"></br>
                                             <span style="color: red">
-                                            <?php echo empty($errors['first_name'])?false:$errors['first_name']; ?>
+                                                <?php echo empty($errors['first_name'])?false:$errors['first_name']; ?>
                                             </span>
-                                        </div><!--//col-->
+                                        </div>
                                     </div><!--//row-->
                                 </div><!--//item-->
                                 <div class="item border-bottom py-3">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto">
-                                            <div class="item-label mb-2"><strong>Tên đăng nhập</strong></div>
-                                            <!-- THÊM TÊN ĐĂNG NHẬP DÔ ĐÂY -->
-                                            <?php echo $user['username'];?>
+                                            <div class="item-label"><strong>Tên đăng nhập</strong></div>
                                         </div><!--//col-->
+                                        <div class="col text-middle">
+                                            <?php echo $user['username'];?>
+                                        </div>
                                     </div><!--//row-->
                                 </div><!--//item-->
                                 <div class="item border-bottom py-3">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto">
                                             <div class="item-label"><strong>Vai trò</strong></div>
-                                            <?php echo $user['role'];?>
                                         </div><!--//col-->
+                                        <div class="col text-middle">
+                                            <?php echo $user['role'];?>
+                                        </div>
                                     </div><!--//row-->
                                 </div><!--//item-->
                                 <div class="item border-bottom py-3">
                                     <div class="row justify-content-between align-items-center">
                                         <div class="col-auto">
-                                            <div class="item-label"><strong>Số điện thoại</strong>
-                                                <input type="number" name="phone_number" placeholder="So dien thoai" 
-                                                value="<?php echo empty($old['phone_number'])?$user['phone_number']:$old['phone_number'];?>"></br>
-                                                <span style="color: red">
-                                                    <?php echo (empty($errors['phone_number'])?false:$errors['phone_number']); ?>
-                                                </span>
-                                            </div>
+                                            <div class="item-label"><strong>Số điện thoại</strong></div>
                                         </div><!--//col-->
+
+                                        <div class="col text-middle">
+                                            <input type="number" name="phone_number" placeholder="So dien thoai" 
+                                            value="<?php echo empty($old['phone_number'])?$user['phone_number']:$old['phone_number'];?>"></br>
+                                            <span style="color: red">
+                                                <?php echo (empty($errors['phone_number'])?false:$errors['phone_number']); ?>
+                                            </span>
+                                        </div>
                                     </div><!--//row-->
                                 </div><!--//item-->
                             </div><!--//app-card-body-->

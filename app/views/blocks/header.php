@@ -13,12 +13,6 @@
 		            <div class="search-mobile-trigger d-sm-none col">
 			            <i class="search-mobile-trigger-icon fas fa-search"></i>
 			        </div><!--//col-->
-		            <div class="app-search-box col">
-		                <form class="app-search-form">   
-							<input type="text" placeholder="Tìm kiếm" name="search" class="form-control search-input">
-							<button type="submit" class="btn search-btn btn-primary" value="Search"><i class="fas fa-search"></i></button> 
-				        </form>
-		            </div><!--//app-search-box-->
 		            
 		            <div class="app-utilities col-auto">
 			            <div class="app-utility-item app-notifications-dropdown dropdown">    
@@ -114,10 +108,10 @@
 			            <div class="app-utility-item app-user-dropdown dropdown">
 				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src=<?php echo _WEB_ROOT."/public/assets/images/user.png";?> alt="user profile"></a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-								<li><a class="dropdown-item" href=<?php echo _WEB_ROOT.'/profile';?>>Account</a></li>
-								<li><a class="dropdown-item" href="settings.html">Settings</a></li>
+								<li><a class="dropdown-item" href=<?php echo _WEB_ROOT.'/profile';?>>Hồ sơ của tôi</a></li>
+								<li><a class="dropdown-item" href=<?php echo _WEB_ROOT."/admin/setting";?>>Cài đặt thiết bị</a></li>
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href=<?php echo _WEB_ROOT."/site/logout";?>>Log Out</a></li>
+								<li><a class="dropdown-item" href=<?php echo _WEB_ROOT."/site/logout";?>><strong style="color: red">Đăng xuất</strong></a></li>
 							</ul>
 			            </div><!--//app-user-dropdown--> 
 		            </div><!--//app-utilities-->

@@ -56,7 +56,7 @@
                                 ?>
                                 <span id='tempLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
                                     else if($flag==2) echo "style='font-weight:bold;color:blue'";
-                                ?>><?php echo $tempLastData; ?>%</span>
+                                ?>><?php echo $tempLastData; ?>&deg;C</span>
                             </div>
 
                             <div id='tempLastUpdate' class="stats-meta text-success">
@@ -78,7 +78,7 @@
                                 ?>
                                 <span id='lightLastData' <?php if($flag==1) echo "style='font-weight:bold;color:red'";
                                     else if($flag==2) echo "style='font-weight:bold;color:blue'";
-                                ?>><?php echo $lightLastData; ?>%</span>
+                                ?>><?php echo $lightLastData; ?> Lux</span>
                             </div>
                             <div id='lightLastUpdate' class="stats-meta text-success">
                                 <?php echo $lightLastUpdate; ?>
