@@ -4,7 +4,7 @@
     !empty($page_title)?$page_title:"No name"
 ?></title>
 
-<div class="app-wrapper">
+<body class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
             
@@ -236,7 +236,7 @@
             </div><!--//row-->
         </div><!--//container-fluid-->
     </div><!--//app-content-->
-</div><!--//app-wrapper-->
+</body><!--//app-wrapper-->
 
 <!-- Charts JS -->
 <script src="public/assets/plugins/chart.js/chart.min.js"></script> 
