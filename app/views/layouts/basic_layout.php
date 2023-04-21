@@ -15,37 +15,13 @@
     <?php echo "<link id='theme-style' rel='stylesheet' href='"._ROOT."/public/assets/css/portal.css'>";?>
     <!-- <link id="theme-style" rel="stylesheet" href="public/assets/css/portal.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
-
 </head> 
 <body>
-<!--    --><?php
-//        $this->render('blocks/header',$header_content);
-//        $this->render($content, $sub_content);
-//        $this->render('blocks/footer');
-//    ?>
-
-    <div class="app row">
-        <div class="app-sidepanel" style="z-index: 1045">
-	        <?php $this->render('blocks/sidebar');?>
-        </div>
-        <div>
-            <header class="app-header fixed-top">
-		        <?php
-		        $this->render('blocks/header',$header_content);
-		        ?>
-            </header>
-            <div>
-		        <?php
-		        $this->render($content, $sub_content);
-		        ?>
-            </div>
-            <footer class="app-footer row fixed-bottom mx-3 ms-5">
-		        <?php
-		        $this->render('blocks/footer');
-		        ?>
-            </footer>
-        </div>
-    </div>
+    <?php
+        $this->render('blocks/header',$header_content);
+        $this->render($content, $sub_content);
+        $this->render('blocks/footer');
+    ?>
     <!-- Javascript -->          
     <?php echo "<script src='"._ROOT."/public/assets/plugins/popper.min.js'></script>";?>
     <?php echo "<script src='"._ROOT."/public/assets/plugins/bootstrap/js/bootstrap.min.js'></script>";?>

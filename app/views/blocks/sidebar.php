@@ -1,4 +1,4 @@
-<div id="app-sidepanel" class="app-sidepanel">
+<div id="app-sidepanel" class="app-sidepanel"> 
     <div id="sidepanel-drop" class="sidepanel-drop"></div>
     <div class="sidepanel-inner d-flex flex-column">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
@@ -45,7 +45,6 @@
                         <span class="nav-link-text">Độ ẩm đất</span>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
-
                 <li class="nav-item has-submenu">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link submenu-toggle" href="" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
@@ -70,10 +69,9 @@
                         </ul>
                     </div>
                 </li><!--//nav-item-->
-
                 <li class="nav-item has-submenu">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link submenu-toggle" href="" data-bs-toggle="collapse" data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
+                    <a class="nav-link" href=<?php echo _WEB_ROOT."/admin/setting";?>>
                         <span class="nav-icon">
                             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -81,21 +79,10 @@
                                 <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
                             </svg>
                         </span>
+
                         <span class="nav-link-text">Cài đặt</span>
-                        <span class="submenu-arrow">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </span><!--//submenu-arrow-->
+                        <span class="submenu-arrow"></span><!--//submenu-arrow-->
                     </a><!--//nav-link-->
-                    <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
-                        <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href=<?php echo _WEB_ROOT."/admin/setting/temperature";?>>Cấu hình nhiệt độ</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href=<?php echo _WEB_ROOT."/admin/setting/soil_humid";?>>Cấu hình độ ẩm đất</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href=<?php echo _WEB_ROOT."/admin/setting/air_humid";?>>Cấu hình độ ẩm không khí</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href=<?php echo _WEB_ROOT."/admin/setting/light";?>>Cấu hình ánh sáng</a></li>
-                        </ul>
-                    </div>
                 </li><!--//nav-item-->
 
                 
