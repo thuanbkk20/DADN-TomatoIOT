@@ -13,6 +13,7 @@ class history extends Controller{
             $query = $this->db->query("SELECT * FROM user WHERE id = '".Session::data('user_id')."';");
             $this->data['user'] = $query->fetch(PDO::FETCH_ASSOC);
         }
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
     }
 
     public function index(){

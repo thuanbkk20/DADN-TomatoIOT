@@ -93,32 +93,32 @@ class home extends Controller{
         $this->render('layouts/basic_layout', $this->data);
     }
 
-    public function device_notify(){
-        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-        $this->data["content"] = 'dashboard/device_notify';
-        $this->render('layouts/basic_layout', $this->data);
-    }
+    // public function device_notify(){
+    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+    //     $this->data["content"] = 'dashboard/device_notify';
+    //     $this->render('layouts/basic_layout', $this->data);
+    // }
 
-    public function device_manage(){
-        $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-        $this->data["content"] = 'dashboard/device_manage';
-        $this->render('layouts/basic_layout', $this->data);
-    }
+    // public function device_manage(){
+    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
+    //     $this->data["content"] = 'dashboard/device_manage';
+    //     $this->render('layouts/basic_layout', $this->data);
+    // }
     // public function setting(){
     //     $this->data['sub_content']['page_title'] = "Cài đặt - Chi tiết";
     //     $this->data["content"] = 'dashboard/setting';
     //     $this->render('layouts/basic_layout', $this->data);
     // }
-    public function account(){
-        $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
-        $this->data["content"] = 'dashboard/account';
-        $this->render('layouts/basic_layout', $this->data);
-    }
-    public function history(){
-        $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
-        $this->data["content"] = 'dashboard/history';
-        $this->render('layouts/basic_layout', $this->data);
-    }
+    // public function account(){
+    //     $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
+    //     $this->data["content"] = 'dashboard/account';
+    //     $this->render('layouts/basic_layout', $this->data);
+    // }
+    // public function history(){
+    //     $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
+    //     $this->data["content"] = 'dashboard/history';
+    //     $this->render('layouts/basic_layout', $this->data);
+    // }
 
     //
 
@@ -155,8 +155,6 @@ class home extends Controller{
         $this->model['EnvModel']->addData(3,$air_humidLastUpdate,$air_humidLastData);
         $this->model['EnvModel']->addData(4,$soil_humidLastUpdate,$soil_humidLastData);
 
-
-
         //Tạo file json
         $data['airHumid']['LastData'] = $air_humidLastData;
         $data['airHumid']['LastUpdate'] = $air_humidLastUpdate;
@@ -182,7 +180,29 @@ class home extends Controller{
         $data['temperature']['minValue'] = $this->model['SensorSetting']->getMinValue('temperature','day_mode',$isDayTime);
         $data['temperature']['maxValue'] = $this->model['SensorSetting']->getMaxValue('temperature','day_mode',$isDayTime);
 
+        //Check xem dữ liệu có vượt ngưỡng không, có thì lưu vào log
+        if($air_humidLastData<$data['airHumid']['minValue']||$air_humidLastData>$data['airHumid']['maxValue']){
+            $mgs = "Độ ẩm không khí tại khu vực 1 vượt ngưỡng bình thường, giá trị ".$air_humidLastData."% tại thời điểm ".$air_humidLastUpdate;
+            $this->model['Log']->addLog($mgs);
+        }
+        if($lightLastData<$data['light']['minValue']||$lightLastData>$data['light']['maxValue']){
+            $mgs = "Cường độ ánh sáng tại khu vực 1 vượt ngưỡng bình thường, giá trị ".$lightLastData." tại thời điểm ".$lightLastUpdate;
+            $this->model['Log']->addLog($mgs);
+        }
+        if($soil_humidLastData<$data['soilHumid']['minValue']||$soil_humidLastData>$data['soilHumid']['maxValue']){
+            $mgs = "Độ ẩm đất tại khu vực 1 vượt ngưỡng bình thường, giá trị ".$soil_humidLastData."% tại thời điểm ".$soil_humidLastUpdate;
+            $this->model['Log']->addLog($mgs);
+        }
+        if($tempLastData<$data['temperature']['minValue']||$tempLastData>$data['temperature']['maxValue']){
+            $mgs = "Nhiệt độ tại khu vực 1 vượt ngưỡng bình thường, giá trị ".$tempLastData."°C tại thời điểm ".$tempLastUpdate;
+            $this->model['Log']->addLog($mgs);
+        }
+
         file_put_contents(_DIR_ROOT.'/public/assets/json/envIndex.json',json_encode($data,JSON_UNESCAPED_UNICODE));
+    }
+
+    public function checkData(){
+
     }
 }
 

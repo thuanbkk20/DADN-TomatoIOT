@@ -1,15 +1,10 @@
 $(document).ready(function () {
-    setInterval(function(){f()},30000);
+    setInterval(function(){dashboard()},30000);
 });
 
-function f(){
-    console.log('f()')
+function dashboard(){
+    console.log('f() Dashboard')
     var webRoot = $("#webRoot").val()
-    var pumpAutoMode = $("#pumpAutoMode").val();
-    var fanAutoMode = $("#fanAutoMode").val();
-    $.ajax({url:webRoot+'/home/autoLoadData',success: function(result){
-        console.log('autoLoadData')
-    }});
     $.ajax({url:webRoot+'/public/assets/json/envIndex.json',success: function(result){
         console.log(result)
 
@@ -54,16 +49,4 @@ function f(){
             $("#airHumidLastData").css("color", "black");
         }
     }});
-
-    if(pumpAutoMode == 1){
-        $.ajax({url:webRoot+'/soilHumid/autoPump',success: function(result){
-            console.log('autoPump')
-        }});
-    }
-
-    if(fanAutoMode == 1){
-        $.ajax({url:webRoot+'/temperature/autoFan',success: function(result){
-            console.log('autoFan')
-        }});
-    }
 }
