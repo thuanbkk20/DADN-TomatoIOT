@@ -51,18 +51,5 @@ class UserModel extends Model{
     public function deleteUser($id){
         $this->db->table($this->_table)->where('id','=',$id)->delete();
     }
-
-    // public function insertCart($data){
-        // $this->db->table("categories")->insert($data);
-        // return $this->db->lastID();
-    // }
-
-    // public function updateCart($data, $id){
-    //     $this->db->table("product_in_cart")->where('user_id','=',$id)->update($data);
-    // }
-
-    // public function deleteCart($id){
-    //     $this->db->table("product_in_cart")->where('user_id','=',$id)->delete();
-    // }
 }
 ?>
