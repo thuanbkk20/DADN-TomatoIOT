@@ -87,6 +87,8 @@ class soilHumid extends Controller{
             $this->data['sub_content']['areaArr'][$arae['id']]['envIndex'] = $this->model['EnvModel']->getValue(4);
         }
 
+        $query = $this->db->query("SELECT * FROM mode WHERE modeName = 'greenMode'");
+        $this->data['sub_content']['greenMode'] = $query->fetch(PDO::FETCH_ASSOC)['value'];
         $this->data["content"] = 'manage/soilHumid';
         $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
