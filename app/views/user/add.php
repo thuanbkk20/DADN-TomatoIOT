@@ -55,8 +55,8 @@
         <input type="password" id="repeatpassword" name="confirm_password" placeholder="Nhập lại mật khẩu" class="form-control form-control-lg" 
         value="<?php echo (empty($old['confirm_password'])?false:$old['confirm_password']);?>"/>
         <span >
-    <?php echo (empty($errors['confirm_password'])?false:$errors['confirm_password']); ?>
-    </span>
+            <?php echo (empty($errors['confirm_password'])?false:$errors['confirm_password']); ?>
+        </span>
     </div>
 
     <div class="d-flex justify-content-center">
