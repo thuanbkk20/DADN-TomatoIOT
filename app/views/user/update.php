@@ -66,7 +66,6 @@
     <?php echo (empty($errors['confirm_password'])?false:$errors['confirm_password']); ?>
     </span>
     </div>
-
     <div class="d-flex justify-content-center">
         <button type="submit"
         class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Cập nhật</button>
