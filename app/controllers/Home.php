@@ -120,8 +120,6 @@ class home extends Controller{
     //     $this->render('layouts/basic_layout', $this->data);
     // }
 
-    //
-
     //Check xem có phải là ban ngày không
     public function isDaytime() {
         date_default_timezone_set('Asia/Ho_Chi_Minh'); // Đặt múi giờ theo định dạng của bạn
@@ -201,8 +199,56 @@ class home extends Controller{
         file_put_contents(_DIR_ROOT.'/public/assets/json/envIndex.json',json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
-    public function checkData(){
+    public function soilHumidChartData(){
+        $data1 = [];
+        $data2 = [];
+        $date = '2023-04-24';
+        // $date = date("Y-m-d");
+        $data1 = $this->model['EnvModel']->getChartData(4,$date);
+        $date = '2023-04-22';
+        // $date = date("Y-m-d",strtotime("-1 days"));
+        $data2 = $this->model['EnvModel']->getChartData(4,$date);
+        file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
+        file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
+    }
 
+    public function airHumidChartData(){
+        $data1 = [];
+        $data2 = [];
+        $date = '2023-04-24';
+        // $date = date("Y-m-d");
+        $data1 = $this->model['EnvModel']->getChartData(3,$date);
+        $date = '2023-04-22';
+        // $date = date("Y-m-d",strtotime("-1 days"));
+        $data2 = $this->model['EnvModel']->getChartData(3,$date);
+        file_put_contents(_DIR_ROOT.'/public/assets/json/airHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
+        file_put_contents(_DIR_ROOT.'/public/assets/json/airHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
+    }
+
+    public function tempChartData(){
+        $data1 = [];
+        $data2 = [];
+        $date = '2023-04-24';
+        // $date = date("Y-m-d");
+        $data1 = $this->model['EnvModel']->getChartData(1,$date);
+        $date = '2023-04-22';
+        // $date = date("Y-m-d",strtotime("-1 days"));
+        $data2 = $this->model['EnvModel']->getChartData(1,$date);
+        file_put_contents(_DIR_ROOT.'/public/assets/json/tempHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
+        file_put_contents(_DIR_ROOT.'/public/assets/json/tempHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
+    }
+
+    public function lightChartData(){
+        $data1 = [];
+        $data2 = [];
+        $date = '2023-04-24';
+        // $date = date("Y-m-d");
+        $data1 = $this->model['EnvModel']->getChartData(2,$date);
+        $date = '2023-04-22';
+        // $date = date("Y-m-d",strtotime("-1 days"));
+        $data2 = $this->model['EnvModel']->getChartData(2,$date);
+        file_put_contents(_DIR_ROOT.'/public/assets/json/lightHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
+        file_put_contents(_DIR_ROOT.'/public/assets/json/lightHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
     }
 }
 
