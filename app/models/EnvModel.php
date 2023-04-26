@@ -86,4 +86,10 @@ class EnvModel extends Model{
         }
         return $data;
     }
+
+    function getChartData($id, $date){
+        $query = $this->db->query("SELECT * FROM tomatoiot.env_index WHERE sensor_id = '$id' AND CAST(time AS DATE) = '$date';");
+        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
 }
