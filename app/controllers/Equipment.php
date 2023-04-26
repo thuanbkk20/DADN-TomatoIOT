@@ -18,6 +18,18 @@ class equipment extends Controller{
     }
 
     public function index(){
+        $this->checkConnect();
+        $this->data['sub_content']['sensor']['sensor1']['type'] = 'Nhiệt độ';
+        $this->data['sub_content']['sensor']['sensor2']['type'] = 'Ánh sáng';
+        $this->data['sub_content']['sensor']['sensor3']['type'] = 'Độ ẩm không khí';
+        $this->data['sub_content']['sensor']['sensor4']['type'] = 'Độ ẩm đất';
+
+        $this->data["content"] = 'equipment';
+        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
+        $this->render('layouts/basic_layout', $this->data);
+    }
+
+    public function checkConnect(){
         $air_humidFeed = $this->aio->getFeed('AIR_HUMID','air-humid');
         $lightFeed = $this->aio->getFeed('LIGHT','light');
         $soil_humidFeed = $this->aio->getFeed('SOIL_HUMID','soil-humid');
@@ -36,6 +48,8 @@ class equipment extends Controller{
             $this->data['sub_content']['sensor']['sensor1']['connect'] = 'Ổn định';
         }else{
             $this->data['sub_content']['sensor']['sensor1']['connect'] = 'Lỗi';
+            $mgs = "Sensor nhiệt độ tại khu vực 1 đã mất kết nối, lần cuối cập nhật dữ liệu là: ".$tempLastUpdate;
+            $this->model['Log']->addLog($mgs);
         }
 
         $sensor2Time = DateTime::createFromFormat('Y-m-d H:i:s', $lightLastUpdate );
@@ -45,6 +59,7 @@ class equipment extends Controller{
             $this->data['sub_content']['sensor']['sensor2']['connect'] = 'Ổn định';
         }else{
             $this->data['sub_content']['sensor']['sensor2']['connect'] = 'Lỗi';
+            $mgs = "Sensor ánh sáng tại khu vực 1 đã mất kết nối, lần cuối cập nhật dữ liệu là: ".$lightLastUpdate;
         }
 
         $sensor3Time = DateTime::createFromFormat('Y-m-d H:i:s', $air_humidLastUpdate);
@@ -54,6 +69,8 @@ class equipment extends Controller{
             $this->data['sub_content']['sensor']['sensor3']['connect'] = 'Ổn định';
         }else{
             $this->data['sub_content']['sensor']['sensor3']['connect'] = 'Lỗi';
+            $mgs = "Sensor độ ẩm không khí tại khu vực 1 đã mất kết nối, lần cuối cập nhật dữ liệu là: ".$air_humidLastUpdate;
+            $this->model['Log']->addLog($mgs);
         }
 
         $sensor4Time = DateTime::createFromFormat('Y-m-d H:i:s', $soil_humidLastUpdate);
@@ -63,20 +80,13 @@ class equipment extends Controller{
             $this->data['sub_content']['sensor']['sensor4']['connect'] = 'Ổn định';
         }else{
             $this->data['sub_content']['sensor']['sensor4']['connect'] = 'Lỗi';
+            $mgs = "Sensor độ ẩm đất tại khu vực 1 đã mất kết nối, lần cuối cập nhật dữ liệu là: ".$soil_humidLastUpdate;
+            $this->model['Log']->addLog($mgs);
         }
 
         $this->data['sub_content']['sensor']['sensor1']['time'] = $tempLastUpdate;
         $this->data['sub_content']['sensor']['sensor2']['time'] = $lightLastUpdate;
         $this->data['sub_content']['sensor']['sensor3']['time'] = $air_humidLastUpdate;
         $this->data['sub_content']['sensor']['sensor4']['time'] = $soil_humidLastUpdate;
-
-        $this->data['sub_content']['sensor']['sensor1']['type'] = 'Nhiệt độ';
-        $this->data['sub_content']['sensor']['sensor2']['type'] = 'Ánh sáng';
-        $this->data['sub_content']['sensor']['sensor3']['type'] = 'Độ ẩm không khí';
-        $this->data['sub_content']['sensor']['sensor4']['type'] = 'Độ ẩm đất';
-
-        $this->data["content"] = 'equipment';
-        $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
-        $this->render('layouts/basic_layout', $this->data);
     }
 }
