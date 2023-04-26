@@ -56,7 +56,7 @@ function dateDiff($date)
 									<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
 									<path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
 								</svg>
-					            <span class="icon-badge">3</span>
+					            <span class="icon-badge">4</span>
 					        </a><!--//dropdown-toggle-->
 					        
 					        <div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
@@ -64,8 +64,9 @@ function dateDiff($date)
 						            <h5 class="dropdown-menu-title mb-0">Thông báo</h5>
 <!--									--><?php //echo '<pre>'; print_r($noti); echo '</pre>';  ?>
 						        </div><!--//dropdown-menu-title-->
-						        <div class="dropdown-menu-content">
+						        <div class="dropdown-menu-content" id="headerLog">
                                     <?php
+										$i = 0;
                                         foreach ($noti as $each):
                                     ?>
 							       <div class="item p-3">
@@ -75,14 +76,15 @@ function dateDiff($date)
 									        </div><!--//col-->
 									        <div class="col">
 										        <div class="info"> 
-											        <div class="desc"><?php echo $each['description'] ?></div>
-											        <div class="meta"><?php echo dateDiff($each['time']) ?></div>
+											        <div class="desc" id="<?php echo "des".$i;?>"><?php echo $each['description'] ?></div>
+											        <div class="meta" id="<?php echo "time".$i;?>"><?php echo dateDiff($each['time']) ?></div>
 										        </div>
 									        </div><!--//col--> 
 								        </div><!--//row-->
 								        <a class="link-mask" href=<?php echo _WEB_ROOT."/equipment";?>></a>
 							       </div><!--//item-->
                                     <?php
+									$i++;
                                     endforeach;
                                     ?>
 						        </div><!--//dropdown-menu-content-->
