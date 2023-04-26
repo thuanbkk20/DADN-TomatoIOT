@@ -12,25 +12,40 @@
                         <div>
                             <input type="hidden" name="id" value="<?php echo $userToUpdate['id'];?>"/>
                         </div>
+                        <span class="text-danger">
+                                <?php echo (empty($msg)?false:$msg); ?>
+                            </span>
                         <div class="col-md-6">
                             <label for="first_name" class="form-label">Tên</label>
                             <input type="text" class="form-control" id="name" name="first_name"
                                    value="<?php echo (empty($old['first_name'])?$userToUpdate['first_name']:$old['first_name']);?>" required />
+                            <span class="text-danger">
+                                <?php echo (empty($errors['first_name'])?false:$errors['first_name']); ?>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             <label for="last_name" class="form-label">Họ và tên đệm</label>
                             <input type="text" class="form-control" id="name" name="last_name"
                                    value="<?php echo (empty($old['last_name'])?$userToUpdate['last_name']:$old['last_name']);?>" required />
+                            <span class="text-danger">
+                                <?php echo (empty($errors['last_name'])?false:$errors['last_name']); ?>
+                            </span>
                         </div>
                         <div class="col-md-8">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="email" name="email"
                                    value="<?php echo (empty($old['email'])?$userToUpdate['username']:$old['email']);?>" required />
+                            <span class="text-danger">
+                                <?php echo (empty($errors['email'])?false:$errors['email']); ?>
+                            </span>
                         </div>
                         <div class="col-md-4">
                             <label for="phone_number" class="form-label">Số điện thoại</label>
                             <input type="text" class="form-control" id="phone_number" name="phone_number"
                                    value="<?php echo (empty($old['phone_number'])?$userToUpdate['phone_number']:$old['phone_number']);?>" required/>
+                            <span class="text-danger">
+                                <?php echo (empty($errors['phone_number'])?false:$errors['phone_number']); ?>
+                            </span>
                         </div>
                         <div class="col-md-12">
                             <label for="role" class="form-label">Vai trò</label>
@@ -43,11 +58,17 @@
                             <label for="password" class="form-label">Mật khẩu</label>
                             <input type="text" class="form-control" id="password" name="password"
                                    value="<?php echo (empty($old['password'])?false:$old['password']);?>" required/>
+                            <span class="text-danger">
+                                <?php echo (empty($errors['password'])?false:$errors['password']); ?>
+                            </span>
                         </div>
                         <div class="col-md-6">
                             <label for="confirm_password" class="form-label">Nhập lại mật khẩu</label>
                             <input type="text" class="form-control" id="confirm_password" name="confirm_password"
                                    value="<?php echo (empty($old['confirm_password'])?false:$old['confirm_password']);?>" required/>
+                            <span class="text-danger">
+                                <?php echo (empty($errors['confirm_password'])?false:$errors['confirm_password']); ?>
+                            </span>
                         </div>
                         <div class="col-md-12 justify-content-end my-2">
                             <button type="submit"
