@@ -80,7 +80,7 @@ function dateDiff($date)
 										        </div>
 									        </div><!--//col--> 
 								        </div><!--//row-->
-								        <a class="link-mask" href=<?php echo _WEB_ROOT."/equipment";?>></a>
+								        <a class="link-mask" href=<?php echo _WEB_ROOT."/history";?>></a>
 							       </div><!--//item-->
                                     <?php
                                     endforeach;
@@ -88,7 +88,7 @@ function dateDiff($date)
 						        </div><!--//dropdown-menu-content-->
 						        
 						        <div class="dropdown-menu-footer p-2 text-center">
-							        <a href=<?php echo _WEB_ROOT."/equipment";?>>View all</a>
+							        <a href=<?php echo _WEB_ROOT."/history";?>>View all</a>
 						        </div>
 															
 							</div><!--//dropdown-menu-->					        
