@@ -15,10 +15,21 @@
                     <div class="page-utilities">
                         <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
                             <div class="col-auto">
-                                <select class="form-select w-auto" >
-                                    <option selected value="option-1">Tất cả</option>
+                                <form class="table-search-form row gx-1 align-items-center">
+                                    <div class="col-auto">
+                                        <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn app-btn-secondary">Search</button>
+                                    </div>
+                                </form>
+
+                            </div><!--//col-->
+                            <div class="col-auto">
+                                <select class="form-select w-auto">
+                                    <option value="option-1">Tất cả</option>
                                     <option value="option-2">Hôm nay</option>
-                                    <option value="option-3">7 ngày</option>
+                                    <option selected value="option-3">7 ngày</option>
                                     <option value="option-4">30 ngày</option>
                                 </select>
                             </div>
@@ -68,7 +79,30 @@
 
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
-                    <nav class="app-pagination">
+                    <div class="text-end my-3 mx-3">
+                        <?php
+                            if(isset($curPage) && (int)$curPage > 1){
+                            echo "<a class='text-decoration-none mx-2 num-page' href='"._WEB_ROOT."/history?page=".($curPage-1)."'>Previous</a>";
+                            }else{
+                            echo "<a class='text-decoration-none mx-2 num-page disabled'>Previous</a>";
+                            }
+                            for($page = 1; $page <= $number_of_page; $page++) {
+                                if(isset($curPage) && ((int)$curPage > $page -3 && (int)$curPage < $page +3)){
+                                    if(isset($curPage) && (int)$curPage === $page){
+                                        echo "<strong><a class='text-decoration-none num-page mx-2'>".$page."</a></strong>";
+                                    } else{
+                                        echo "<a class='text-decoration-none mx-2 num-page' href='"._WEB_ROOT."/history?page=".$page."'>".$page."</a>";
+                                    }
+                                }
+                            }
+                            if(isset($curPage) && (int)$curPage < $number_of_page){
+                            echo "<a class='text-decoration-none mx-2 num-page' href='"._WEB_ROOT."/history?page=".($curPage+1)."'>Next</a>";
+                            }else{
+                            echo "<a class='text-decoration-none mx-2 num-page disabled'>Next</a>";
+                            }
+                        ?>
+                    </div>
+                    <!-- <nav class="app-pagination">
                         <ul class="pagination justify-content-center">
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -80,8 +114,7 @@
                                 <a class="page-link" href="#">Next</a>
                             </li>
                         </ul>
-                    </nav><!--//app-pagination-->
-
+                    </nav>//app-pagination -->
                 </div><!--//tab-pane-->
             </div>
         </div><!--//container-fluid-->

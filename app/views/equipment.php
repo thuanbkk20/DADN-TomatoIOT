@@ -10,7 +10,7 @@
         <div class="container-xl">
             <div class="row mb-4 justify-content-between">
                 <div class="col-auto">
-                    <h1 class="app-page-title">Nhiệt độ</h1>
+                    <h1 class="app-page-title">Thiết bị</h1>
                 </div>
             </div>
         </div>
@@ -31,7 +31,11 @@
                             <?php
                                 foreach ($sensor as $each):
                             ?>
-                            <tr>
+                            <tr
+                                <?php
+                                if($each['connect'] == 'Lỗi') echo "style='background-color:#EEBF41; font-weight:bold'";
+                                ?>
+                            >
                                 <td class="cell">Khu vực 1</td>
                                 <td class="cell">
                                     <?php echo $each['type'] ?>
