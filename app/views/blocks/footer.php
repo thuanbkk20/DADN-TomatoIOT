@@ -1,5 +1,15 @@
-<footer class="app-footer ">
-    <div class="container text-end py-3">
-    <small class="copyright">Thực hiện bởi nhóm <strong style="color: forestgreen;">TPPT</strong> <span class="sr-only"></span> <strong>Đại Học Bách Khoa Thành Phố Hồ Chí Minh</strong> Bản quyền © 2023</small>
+<footer class="row">
+    <div class="col-2"></div>
+    <div class="app-footer bg-white col-10" style="bottom: 0;">
+        <div class="container py-3">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <span class="text-muted">Thực hiện bởi nhóm <strong class="text-success">TPPT</strong> - <strong>Đại Học Bách Khoa Thành Phố Hồ Chí Minh</strong></span>
+                </div>
+                <div class="col-auto">
+                    <span class="text-muted">&copy; 2023 Bản quyền thuộc về TPPT</span>
+                </div>
+            </div>
+        </div>
     </div>
-</footer><!--//app-footer-->
+</footer>

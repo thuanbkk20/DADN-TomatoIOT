@@ -28,6 +28,7 @@
         $this->render($content, $sub_content);
         $this->render('blocks/footer');
     ?>
+
     <!-- Javascript -->          
     <?php echo "<script src='"._ROOT."/public/assets/plugins/popper.min.js'></script>";?>
     <?php echo "<script src='"._ROOT."/public/assets/plugins/bootstrap/js/bootstrap.min.js'></script>";?>

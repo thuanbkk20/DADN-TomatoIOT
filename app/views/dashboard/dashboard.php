@@ -24,7 +24,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Độ ẩm đất</h4>
+                            <h4 class="stats-type mb-1">Độ ẩm đất (%)</h4>
                             <div class="stats-figure">
                                 <!-- CHƯA CHỈNH SỬA THEO CHẾ ĐỘ RA HOA KẾT QUẢ HAY CÒN XANH - BẢN DEMO TẠM THEO NGÀY ĐÊM -->
                                 <?php 
@@ -47,7 +47,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Nhiệt độ</h4>
+                            <h4 class="stats-type mb-1">Nhiệt độ (&deg;C)</h4>
                             <div class="stats-figure">
                                 <?php 
                                     $flag = 0;
@@ -69,7 +69,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Độ sáng</h4>
+                            <h4 class="stats-type mb-1">Độ sáng (Lux)</h4>
                             <div class="stats-figure">
                                 <?php 
                                     $flag = 0;
@@ -90,7 +90,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Độ ẩm không khí</h4>
+                            <h4 class="stats-type mb-1">Độ ẩm không khí (%)</h4>
                             <div class="stats-figure">
                                 <?php 
                                     $flag = 0;

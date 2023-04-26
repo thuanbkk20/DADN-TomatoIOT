@@ -1,3 +1,9 @@
+<style>
+    .app-content {
+        height: 83.5vh !important;
+    }
+</style>
+
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
@@ -41,9 +47,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<?php
-    foreach($userArr as $user):
-        ?>
+                                    <?php
+                                        foreach($userArr as $user):
+                                            ?>
                                     <tr>
                                         <td class="cell"><?php echo $user['first_name']; ?></td>
                                         <td class="cell"><?php echo $user['last_name']; ?></td>
