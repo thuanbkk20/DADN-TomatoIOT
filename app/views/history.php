@@ -20,16 +20,16 @@
                                         <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
                                     </div>
                                     <div class="col-auto">
-                                        <button class="btn app-btn-secondary">Search</button>
+                                        <button type="submit" class="btn app-btn-secondary">Search</button>
                                     </div>
                                 </form>
 
                             </div><!--//col-->
                             <div class="col-auto">
-                                <select class="form-select w-auto" >
-                                    <option selected value="option-1">Tất cả</option>
+                                <select class="form-select w-auto">
+                                    <option value="option-1">Tất cả</option>
                                     <option value="option-2">Hôm nay</option>
-                                    <option value="option-3">7 ngày</option>
+                                    <option selected value="option-3">7 ngày</option>
                                     <option value="option-4">30 ngày</option>
                                 </select>
                             </div>

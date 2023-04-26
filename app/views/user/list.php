@@ -1,3 +1,9 @@
+<style>
+    .app-content {
+        height: 83.5vh !important;
+    }
+</style>
+
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
@@ -11,14 +17,8 @@
                             <div class="col-auto">
                                 <form class="table-search-form row gx-1 align-items-center">
                                     <div class="col-auto">
-                                        <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn bg-primary text-light mx-1">Search</button>
-                                    </div>
-                                    <div class="col-auto">
                                         <a role="button" class="btn btn-outline-danger"
-                                                href=<?php echo _WEB_ROOT."/admin/UserModify/create"; ?>>
+                                            href=<?php echo _WEB_ROOT."/admin/UserModify/create"; ?>>
                                             Thêm tài khoản
                                         </a>
                                     </div>
@@ -47,9 +47,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<?php
-    foreach($userArr as $user):
-        ?>
+                                    <?php
+                                        foreach($userArr as $user):
+                                            ?>
                                     <tr>
                                         <td class="cell"><?php echo $user['first_name']; ?></td>
                                         <td class="cell"><?php echo $user['last_name']; ?></td>
