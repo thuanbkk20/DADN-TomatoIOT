@@ -49,16 +49,16 @@
             Chọn chế độ
         </label>
         <select name="valueMode">
-            <option value='1'>Thường xanh</option>
-            <option value='0'>Ra hoa kết quả</option>
+            <option value='1' <?php if($greenMode==1) echo "selected"; ?>>Thường xanh</option>
+            <option value='0' <?php if($greenMode==0) echo "selected"; ?>>Ra hoa kết quả</option>
         </select>
 
         <label for="mode">
             Chọn chế độ bơm
         </label>
         <select id="pumpMode" name="pumpMode">
-            <option value='1'>Tự động</option>
-            <option value='0'>Bằng tay</option>
+            <option value='1' <?php if($pumpAutoMode==1) echo "selected"; ?> >Tự động</option>
+            <option value='0' <?php if($pumpAutoMode==0) echo "selected"; ?>>Bằng tay</option>
         </select>
         <button name="updateMode" type="submit">Xác nhận</button>
     </form>

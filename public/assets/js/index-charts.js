@@ -23,7 +23,7 @@ var lineChartConfig = {
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		
 		datasets: [{
-			label: 'Hôm nay',
+			label: 'Nhiệt độ hôm nay',
 			fill: false,
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
@@ -54,7 +54,7 @@ var lineChartConfig = {
 				randomDataPoint()
 			],
 		}, {
-			label: 'Hôm qua',
+			label: 'Nhiệt độ hôm qua',
 		    borderDash: [3, 5],
 			backgroundColor: window.chartColors.gray,
 			borderColor: window.chartColors.gray,
@@ -127,7 +127,6 @@ var lineChartConfig = {
                     }
                 }
             },
-
 		},
 		hover: {
 			mode: 'nearest',
@@ -176,7 +175,7 @@ var barChartConfig = {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		datasets: [{
-			label: 'Orders',
+			label: 'Độ ẩm đất',
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			borderWidth: 1,
@@ -278,7 +277,7 @@ var lineChartConfig_2 = {
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		
 		datasets: [{
-			label: 'Dataset',
+			label: 'Độ sáng',
 			backgroundColor: "rgba(117,193,129,0.2)", 
 			borderColor: "rgba(117,193,129, 0.8)", 
 			data: [
@@ -380,22 +379,44 @@ var lineChartConfig_2 = {
 		}
 	}
 };
-
+var randomData_2 = function(){ return Math.round(Math.random()*100)};
 var barChartConfig_2 = {
 	type: 'bar',
-
 	data: {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		datasets: [{
-			label: 'Orders',
+			label: 'Độ ẩm không khí',
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			borderWidth: 1,
 			maxBarThickness: 16,
 			
 			data: [
-				23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,60,80,90,45,54,19
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
+				randomData_2(),
 			]
 		}]
 	},
