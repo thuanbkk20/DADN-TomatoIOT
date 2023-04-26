@@ -1,4 +1,38 @@
-<body class="app">   	
+<?php
+
+//Code written by purpledesign.in Jan 2014
+function dateDiff($date)
+{
+	$mydate= date("Y-m-d H:i:s");
+	$theDiff="";
+	//echo $mydate;//2014-06-06 21:35:55
+	$datetime1 = date_create($date);
+	$datetime2 = date_create($mydate);
+	$interval = date_diff($datetime1, $datetime2);
+	//echo $interval->format('%s Seconds %i Minutes %h Hours %d days %m Months %y Year    Ago')."<br>";
+	$min=$interval->format('%i');
+	$sec=$interval->format('%s');
+	$hour=$interval->format('%h');
+	$mon=$interval->format('%m');
+	$day=$interval->format('%d');
+	$year=$interval->format('%y');
+	if($interval->format('%i%h%d%m%y')=="00000") {
+		//echo $interval->format('%i%h%d%m%y')."<br>";
+		return $sec." giây trớc";
+	} else if($interval->format('%h%d%m%y')=="0000"){
+		return $min." phút trước";
+	} else if($interval->format('%d%m%y')=="000"){
+		return $hour." giờ trước";
+	} else if($interval->format('%m%y')=="00"){
+		return $day." ngày trước";
+	} else if($interval->format('%y')=="0"){
+		return $mon." tháng";
+	} else{
+		return $year." năm";
+	}
+}
+?>
+<body class="app">
     <header class="app-header fixed-top">	   	            
         <div class="app-header-inner">  
 	        <div class="container-fluid py-2">
@@ -28,9 +62,12 @@
 					        <div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
 					            <div class="dropdown-menu-header p-3">
 						            <h5 class="dropdown-menu-title mb-0">Thông báo</h5>
-									<?php echo '<pre>'; print_r($noti); echo '</pre>';  ?>
+<!--									--><?php //echo '<pre>'; print_r($noti); echo '</pre>';  ?>
 						        </div><!--//dropdown-menu-title-->
 						        <div class="dropdown-menu-content">
+                                    <?php
+                                        foreach ($noti as $each):
+                                    ?>
 							       <div class="item p-3">
 								        <div class="row gx-2 justify-content-between align-items-center">
 									        <div class="col-auto">
@@ -38,59 +75,20 @@
 									        </div><!--//col-->
 									        <div class="col">
 										        <div class="info"> 
-											        <div class="desc">Trọng Phú chân thành cảm ơn mọi người đã quan tâm và chia sẻ!</div>
-											        <div class="meta"> 2 hrs ago</div>
+											        <div class="desc"><?php echo $each['description'] ?></div>
+											        <div class="meta"><?php echo dateDiff($each['time']) ?></div>
 										        </div>
 									        </div><!--//col--> 
 								        </div><!--//row-->
-								        <a class="link-mask" href=<?php echo _WEB_ROOT."/home/device_notify";?>></a>
+								        <a class="link-mask" href=<?php echo _WEB_ROOT."/equipment";?>></a>
 							       </div><!--//item-->
-							       <div class="item p-3">
-								        <div class="row gx-2 justify-content-between align-items-center">
-									        <div class="col-auto">
-												<?php echo "<img class='profile-image' src='"._ROOT."/public/assets/images/tomato.png'>";?>
-											 </div><!--//col-->
-									        <div class="col">
-										        <div class="info"> 
-											        <div class="desc">Thiết bị ở khu vực X đang gặp sự cố</div>
-											        <div class="meta"> 1 day ago</div>
-										        </div>
-									        </div><!--//col-->
-								        </div><!--//row-->
-								        <a class="link-mask" href=<?php echo _WEB_ROOT."/home/device_notify";?>></a>
-							       </div><!--//item-->
-							       <div class="item p-3">
-								        <div class="row gx-2 justify-content-between align-items-center">
-									        <div class="col-auto">
-												<?php echo "<img class='profile-image' src='"._ROOT."/public/assets/images/tomato.png'>";?>
-											 </div><!--//col-->
-									        <div class="col">
-										        <div class="info"> 
-											        <div class="desc">Cố gắng lên mọi người ới ơi!</div>
-											        <div class="meta"> 3 days ago</div>
-										        </div>
-									        </div><!--//col-->
-								        </div><!--//row-->
-								        <a class="link-mask" href=<?php echo _WEB_ROOT."/home/device_notify";?>></a>
-							       </div><!--//item-->
-							       <div class="item p-3">
-								        <div class="row gx-2 justify-content-between align-items-center">
-									        <div class="col-auto">
-												<?php echo "<img class='profile-image' src='"._ROOT."/public/assets/images/tomato.png'>";?>
-									        </div><!--//col-->
-									        <div class="col">
-										        <div class="info"> 
-											        <div class="desc">Độ ẩm đất ở khu vực X quá thấp, máy bơm đã được bật</div>
-											        <div class="meta"> 7 days ago</div>
-										        </div>
-									        </div><!--//col--> 
-								        </div><!--//row-->
-								        <a class="link-mask" href=<?php echo _WEB_ROOT."/home/device_notify";?>></a>
-							       </div><!--//item-->
+                                    <?php
+                                    endforeach;
+                                    ?>
 						        </div><!--//dropdown-menu-content-->
 						        
 						        <div class="dropdown-menu-footer p-2 text-center">
-							        <a href=<?php echo _WEB_ROOT."/home/device_notify";?>>View all</a>
+							        <a href=<?php echo _WEB_ROOT."/equipment";?>>View all</a>
 						        </div>
 															
 							</div><!--//dropdown-menu-->					        
