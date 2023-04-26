@@ -67,5 +67,5 @@ function dateDiff(date) {
     } else {
       return seconds + " giây trước";
     }
-  }
+}
   
