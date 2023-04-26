@@ -24,7 +24,7 @@
 								</svg>
 					            <span class="icon-badge">3</span>
 					        </a><!--//dropdown-toggle-->
-					        
+					        <!-- THONG BAO -->
 					        <div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
 					            <div class="dropdown-menu-header p-3">
 						            <h5 class="dropdown-menu-title mb-0">Thông báo</h5>

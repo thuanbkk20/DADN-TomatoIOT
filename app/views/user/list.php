@@ -11,14 +11,8 @@
                             <div class="col-auto">
                                 <form class="table-search-form row gx-1 align-items-center">
                                     <div class="col-auto">
-                                        <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn bg-primary text-light mx-1">Search</button>
-                                    </div>
-                                    <div class="col-auto">
                                         <a role="button" class="btn btn-outline-danger"
-                                                href=<?php echo _WEB_ROOT."/admin/UserModify/create"; ?>>
+                                            href=<?php echo _WEB_ROOT."/admin/UserModify/create"; ?>>
                                             Thêm tài khoản
                                         </a>
                                     </div>
