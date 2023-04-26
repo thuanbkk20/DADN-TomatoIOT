@@ -122,12 +122,6 @@
                                     <div class="mb-3 d-flex">   
                                         <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
                                             <option value="1" selected>Khu vực 1</option>
-                                            <option value="2">Khu vực 2</option>
-                                            <option value="3">Khu vực 3</option>
-                                            <option value="4">Khu vực 4</option>
-                                            <option value="5">Khu vực 5</option>
-                                            <option value="6">Khu vực 6</option>
-                                            <option value="7">Khu vực 7</option>
                                         </select>
                                     </div>
                                 </div><!--//col-->
@@ -152,12 +146,6 @@
                                     <div class="mb-3 d-flex">   
                                         <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
                                             <option value="1" selected>Khu vực 1</option>
-                                            <option value="2">Khu vực 2</option>
-                                            <option value="3">Khu vực 3</option>
-                                            <option value="4">Khu vực 4</option>
-                                            <option value="5">Khu vực 5</option>
-                                            <option value="6">Khu vực 6</option>
-                                            <option value="7">Khu vực 7</option>
                                         </select>
                                     </div>
                                 </div><!--//col-->
@@ -185,12 +173,6 @@
                                     <div class="mb-3 d-flex">   
                                         <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
                                             <option value="1" selected>Khu vực 1</option>
-                                            <option value="2">Khu vực 2</option>
-                                            <option value="3">Khu vực 3</option>
-                                            <option value="4">Khu vực 4</option>
-                                            <option value="5">Khu vực 5</option>
-                                            <option value="6">Khu vực 6</option>
-                                            <option value="7">Khu vực 7</option>
                                         </select>
                                     </div>
                                 </div><!--//col-->
@@ -215,12 +197,6 @@
                                     <div class="mb-3 d-flex">   
                                         <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
                                             <option value="1" selected>Khu vực 1</option>
-                                            <option value="2">Khu vực 2</option>
-                                            <option value="3">Khu vực 3</option>
-                                            <option value="4">Khu vực 4</option>
-                                            <option value="5">Khu vực 5</option>
-                                            <option value="6">Khu vực 6</option>
-                                            <option value="7">Khu vực 7</option>
                                         </select>
                                     </div>
                                 </div><!--//col-->
@@ -241,6 +217,7 @@
 <!-- Charts JS -->
 <script src="public/assets/plugins/chart.js/chart.min.js"></script> 
 <script src="public/assets/js/index-charts.js"></script> 
+<script src="public/assets/js/update-charts.js"></script> 
 </div>
 
 <!-- Các trường input hidden phục vụ cho javascript -->
