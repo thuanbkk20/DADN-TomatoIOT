@@ -1,9 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
-<!-- Set title -->
-<title><?=
-    !empty($page_title)?$page_title:"No name"
-?></title>
-
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
@@ -117,23 +111,24 @@
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
                                     <h4 class="app-card-title">Nhiệt độ</h4>
-                                </div><!--//col-->
+                                </div>
                                 <div class="col-auto">
                                     <div class="mb-3 d-flex">   
                                         <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
                                             <option value="1" selected>Khu vực 1</option>
                                         </select>
                                     </div>
-                                </div><!--//col-->
-                            </div><!--//row-->
-                        </div><!--//app-card-header-->
+                                </div>
+                            </div>
+                        </div>
                         <div class="app-card-body p-3 p-lg-4">
                             <div class="chart-container">
                                 <canvas id="canvas-linechart"></canvas>
                             </div>
-                        </div><!--//app-card-body-->
-                    </div><!--//app-card-->
-                </div><!--//col-->
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-chart h-100 shadow-sm">
@@ -214,15 +209,13 @@
     </div><!--//app-content-->
 </div><!--//app-wrapper-->
 
-<!-- Charts JS -->
-<script src="public/assets/plugins/chart.js/chart.min.js"></script> 
-<script src="public/assets/js/index-charts.js"></script> 
-<script src="public/assets/js/update-charts.js"></script> 
-</div>
-
 <!-- Các trường input hidden phục vụ cho javascript -->
 <input type="hidden" id="pumpAutoMode" value=<?php echo $pumpAutoMode; ?>>
 <input type="hidden" id="fanAutoMode" value=<?php echo $fanAutoMode; ?>>
 <input type="hidden" id="webRoot" value=<?php echo _WEB_ROOT; ?>>
 
-<script type="text/javascript"  src=<?php echo _WEB_ROOT."/public/assets/js/dashboard.js";?>></script>
+<script type="text/javascript" src="/public/assets/js/dashboard.js"></script>
+<!-- Charts JS -->
+<script src="public/assets/plugins/chart.js/chart.min.js"></script> 
+<script src="public/assets/js/index-charts.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->

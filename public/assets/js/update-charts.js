@@ -19,6 +19,7 @@ function f1(){
     //Lấy dữ liệu từ file json
     $.ajax({url:webRoot+'/public/assets/json/tempHumidChart1.json',success: function(result){
         console.log("Temp Chart Data1",result)
+        myLineChart.update();
     }});
     $.ajax({url:webRoot+'/public/assets/json/tempHumidChart2.json',success: function(result){
         console.log("Temp Chart Data2",result)

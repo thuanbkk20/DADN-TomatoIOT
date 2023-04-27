@@ -1,6 +1,131 @@
 'use strict';
+// temp chart
+var iot_1 = document.getElementById('canvas-linechart');
+var myLineChart1 = new Chart(iot_1, lineChartConfig);
+// soilhumid chart
+var iot_2 = document.getElementById('canvas-barchart');
+var myLineChart2 = new Chart(iot_2, barChartConfig);
+// // light
+var iot_3 = document.getElementById('canvas-linechart-2');
+var myLineChart3 = new Chart(iot_3, lineChartConfig_2);
+// //airhumid
+var iot_4 = document.getElementById('canvas-barchart-2');
+var myLineChart4 = new Chart(iot_4, barChartConfig_2);
+$(document).ready(function(){
+    f1();
+    f2();
+    f3();
+    f4();
+    setInterval(function(){f1()},30000);
+    setInterval(function(){f2()},30000);
+    setInterval(function(){f3()},30000);
+    setInterval(function(){f4()},30000);
+});
 
-/* Chart.js docs: https://www.chartjs.org/ */
+// LẤY DỮ LIỆU LÊN NHIỆT ĐỘ
+function f1(){
+    //Get value temp date value
+    var webRoot = $("#webRoot").val();
+    $.ajax({url:webRoot+'/Home/tempChartData',success: function(result){
+        // console.log("Update temp chart json");
+    }});
+    //Lấy dữ liệu từ file json
+	$.ajax({url:webRoot+'/public/assets/json/tempHumidChart1.json',success: function(result){
+		if(result){
+			var tempData = result.slice(-24).map(function(data)
+			{
+				return data.value;
+			});
+			lineChartConfig.data.datasets[0].data = tempData;
+			myLineChart1.update();
+		}
+	}});
+	$.ajax({url:webRoot+'/public/assets/json/tempHumidChart2.json',success: function(result){
+		if(result){
+			var tempData = result.slice(-24).map(function(data)
+			{
+				return data.value;
+			});
+			lineChartConfig.data.datasets[1].data = tempData;
+			myLineChart1.update();
+		}
+	}});
+}
+
+function f2(){
+    var webRoot = $("#webRoot").val();
+    $.ajax({url:webRoot+'/Home/soilHumidChartData',success: function(result){
+        console.log("Update temp chart json");
+    }});
+    $.ajax({url:webRoot+'/public/assets/json/soilHumidChart1.json',success: function(result){
+		console.log("Humid Chart Data",result);
+		var humidData = result.slice(-24).map(function(data)
+		{
+			return data.value;
+		});
+		console.log("Humid Chart Data 1",humidData);
+		barChartConfig.data.datasets[0].data = humidData;
+		myLineChart2.update();
+    }});
+    $.ajax({url:webRoot+'/public/assets/json/soilHumidChart2.json',success: function(result){
+		var humidData = result.slice(-24).map(function(data)
+		{
+			return data.value;
+		});
+		console.log("Humid Chart Data 2",humidData);
+		barChartConfig.data.datasets[1].data = humidData;
+		myLineChart2.update();
+    }});
+}
+
+function f3(){
+    var webRoot = $("#webRoot").val();
+    $.ajax({url:webRoot+'/Home/lightChartData',success: function(result){}});
+    $.ajax({url:webRoot+'/public/assets/json/lightHumidChart1.json',success: function(result){
+		var lightData = result.slice(-24).map(function(data)
+		{
+			return data.value;
+		});
+		console.log("Light Chart Data 1", lightData);
+		lineChartConfig_2.data.datasets[0].data = lightData;
+		myLineChart3.update();
+    }});
+
+    $.ajax({url:webRoot+'/public/assets/json/lightHumidChart2.json',success: function(result){
+		var lightData = result.slice(-24).map(function(data)
+		{
+			return data.value;
+		});
+		console.log("Light Chart Data 2", lightData);
+		lineChartConfig_2.data.datasets[1].data = lightData;
+		myLineChart3.update();
+    }});
+}
+
+function f4(){
+    var webRoot = $("#webRoot").val();
+    $.ajax({url:webRoot+'/Home/airHumidChartData',success: function(result){
+        console.log("Update temp chart json");
+    }});
+    $.ajax({url:webRoot+'/public/assets/json/airHumidChart1.json',success: function(result){
+		var airData = result.slice(-24).map(function(data)
+        {
+            return data.value;
+        });
+        console.log("Air Humid Data 1", airData);
+		barChartConfig_2.data.datasets[0].data = airData;
+		myLineChart4.update();
+    }});
+    $.ajax({url:webRoot+'/public/assets/json/airHumidChart2.json',success: function(result){
+		var airData = result.slice(-24).map(function(data)
+        {
+            return data.value;
+        });
+        console.log("Air Humid Data 2", airData);
+		barChartConfig_2.data.datasets[1].data = airData;
+		myLineChart4.update();
+    }});
+}
 
 window.chartColors = {
 	green: '#75c181',
@@ -9,83 +134,26 @@ window.chartColors = {
 	border: '#e7e9ed'
 };
 
-/* Random number generator for demo purpose */
-var randomDataPoint = function(){ return Math.round(Math.random()*100)};
-
-
-//Chart.js Line Chart Example 
-
 var lineChartConfig = {
 	type: 'line',
 
 	data: {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
-		
+				 
 		datasets: [{
 			label: 'Nhiệt độ hôm nay',
 			fill: false,
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
-			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint()
-			],
-		}, {
+			data: [],
+		},{
 			label: 'Nhiệt độ hôm qua',
 		    borderDash: [3, 5],
 			backgroundColor: window.chartColors.gray,
 			borderColor: window.chartColors.gray,
 			
-			data: [
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint(),
-				randomDataPoint()
-			],
+			data: [],
 			fill: false,
 		}]
 	},
@@ -102,7 +170,7 @@ var lineChartConfig = {
 		title: {
 			display: true,
 			text: 'Biểu đồ theo dõi nhiệt độ',
-			
+
 		}, 
 		tooltips: {
 			mode: 'index',
@@ -154,19 +222,18 @@ var lineChartConfig = {
 					display: false,
 				},
 				ticks: {
+					min: 0,
+					max: 100,
+					stepSize: 10,
 		            beginAtZero: true,
 		            userCallback: function(value, index, values) {
-		                return value.toLocaleString() + '\u00B0C';   //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+		                return value.toLocaleString() + '\u00B0C';   
 		            }
 		        },
 			}]
 		}
 	}
 };
-
-
-
-// Chart.js Bar Chart Example 
 
 var barChartConfig = {
 	type: 'bar',
@@ -175,51 +242,28 @@ var barChartConfig = {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		datasets: [{
-			label: 'Độ ẩm đất',
-			backgroundColor: window.chartColors.green,
-			borderColor: window.chartColors.green,
-			borderWidth: 1,
-			maxBarThickness: 16,
-			
-			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83,
-				34,
-				21,
-				23,
-				23,
-				32,
-				21,
-				34,
-				47,
-				32,
-				49,
-				55,
-				59,
-				78,
-				38,
-				17,
-				91,
-				82
-			]
-		}]
+			label: 'Độ ẩm đất hôm nay',
+			backgroundColor: "rgba(117,193,129,0.8)", 
+			hoverBackgroundColor: "rgba(117,193,129,1)",	
+			data: []
+		}, 
+		{
+			label: 'Độ ẩm đất hôm qua',
+			backgroundColor: "rgba(91,153,234,0.8)", 
+			hoverBackgroundColor: "rgba(91,153,234,1)",
+			data: []
+		}
+		]
 	},
 	options: {
 		responsive: true,
 		aspectRatio: 1.5,
+
 		legend: {
 			position: 'bottom',
 			align: 'end',
 		},
-		title: {
-			display: true,
-			text: 'Biểu đồ theo dõi độ ẩm đất'
-		},
+
 		tooltips: {
 			mode: 'index',
 			intersect: false,
@@ -232,7 +276,11 @@ var barChartConfig = {
 			backgroundColor: '#fff',
 			bodyFontColor: window.chartColors.text,
 			titleFontColor: window.chartColors.text,
-
+			callbacks: {
+				label: function(tooltipItem, data) {	                 
+					return tooltipItem.value + '%';   
+				}
+			},	
 		},
 		scales: {
 			xAxes: [{
@@ -249,9 +297,17 @@ var barChartConfig = {
 					drawBorder: false,
 					color: window.chartColors.borders,
 				},
+				ticks: {
+					min: 0,
+					max: 100,
+					stepSize: 10,
+					beginAtZero: true,
+					userCallback: function(value, index, values) {
+						return value + '%';  
+					}
+				},
 			}]
 		}
-		
 	}
 }
 
@@ -266,64 +322,44 @@ window.addEventListener('load', function(){
 
 });	
 	
-/* Random number generator for demo purpose */
-var randomData = function(){ return Math.round(Math.random()*4000)};
-//Area line Chart Demo
 var lineChartConfig_2 = {
 	type: 'line',
 
 	data: {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
-		
+				 
 		datasets: [{
-			label: 'Độ sáng',
-			backgroundColor: "rgba(117,193,129,0.2)", 
-			borderColor: "rgba(117,193,129, 0.8)", 
-			data: [
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-				randomData(),
-			],
+			label: 'Độ sáng hôm nay',
+			fill: false,
+			backgroundColor: window.chartColors.green,
+			borderColor: window.chartColors.green,
+			data: [],
+		},{
+			label: 'Độ sáng hôm qua',
+		    borderDash: [3, 5],
+			backgroundColor: window.chartColors.gray,
+			borderColor: window.chartColors.gray,
+			
+			data: [],
+			fill: false,
 		}]
 	},
 	options: {
+		responsive: true,	
 		aspectRatio: 1.5,
-		responsive: true,		
 		
 		legend: {
 			display: true,
 			position: 'bottom',
 			align: 'end',
 		},
-
+		
 		title: {
 			display: true,
 			text: 'Biểu đồ theo dõi độ sáng',
-			
-		}, 
 
+		}, 
 		tooltips: {
 			mode: 'index',
 			intersect: false,
@@ -336,13 +372,16 @@ var lineChartConfig_2 = {
 			backgroundColor: '#fff',
 			bodyFontColor: window.chartColors.text,
 			titleFontColor: window.chartColors.text,
+
             callbacks: {
-                label: function(tooltipItem, data) {	                 
-	                return tooltipItem.value + ' Lux';   
+                label: function(tooltipItem, data) {
+	                if (parseInt(tooltipItem.value) >= 1000) {
+                        return tooltipItem.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' Lux';
+                    } else {
+	                    return tooltipItem.value + ' Lux';
+                    }
                 }
             },
-            
-
 		},
 		hover: {
 			mode: 'nearest',
@@ -370,67 +409,48 @@ var lineChartConfig_2 = {
 					display: false,
 				},
 				ticks: {
+					min: 0,
+					max: 100,
+					stepSize: 10,
 		            beginAtZero: true,
 		            userCallback: function(value, index, values) {
-		                return value.toLocaleString() + ' Lux';  
+		                return value.toLocaleString() + ' Lux';   
 		            }
 		        },
 			}]
 		}
 	}
 };
-var randomData_2 = function(){ return Math.round(Math.random()*100)};
+
 var barChartConfig_2 = {
 	type: 'bar',
+
 	data: {
 		labels: ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM', '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', 
 				 '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM'],
 		datasets: [{
-			label: 'Độ ẩm không khí',
-			backgroundColor: window.chartColors.green,
-			borderColor: window.chartColors.green,
-			borderWidth: 1,
-			maxBarThickness: 16,
-			
-			data: [
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-				randomData_2(),
-			]
-		}]
+			label: 'Độ ẩm không khí hôm nay',
+			backgroundColor: "rgba(117,193,129,0.8)", 
+			hoverBackgroundColor: "rgba(117,193,129,1)",	
+			data: []
+		}, 
+		{
+			label: 'Độ ẩm không khí hôm qua',
+			backgroundColor: "rgba(91,153,234,0.8)", 
+			hoverBackgroundColor: "rgba(91,153,234,1)",
+			data: []
+		}
+		]
 	},
 	options: {
 		responsive: true,
 		aspectRatio: 1.5,
+
 		legend: {
 			position: 'bottom',
 			align: 'end',
 		},
-		title: {
-			display: true,
-			text: 'Biểu đồ theo dõi độ ẩm không khí'
-		},
+
 		tooltips: {
 			mode: 'index',
 			intersect: false,
@@ -443,7 +463,11 @@ var barChartConfig_2 = {
 			backgroundColor: '#fff',
 			bodyFontColor: window.chartColors.text,
 			titleFontColor: window.chartColors.text,
-
+			callbacks: {
+				label: function(tooltipItem, data) {	                 
+					return tooltipItem.value + '%';   
+				}
+			},	
 		},
 		scales: {
 			xAxes: [{
@@ -452,7 +476,6 @@ var barChartConfig_2 = {
 					drawBorder: false,
 					color: window.chartColors.border,
 				},
-
 			}],
 			yAxes: [{
 				display: true,
@@ -460,9 +483,17 @@ var barChartConfig_2 = {
 					drawBorder: false,
 					color: window.chartColors.borders,
 				},
+				ticks: {
+					min: 0,
+					max: 100,
+					stepSize: 10,
+					beginAtZero: true,
+					userCallback: function(value, index, values) {
+						return value + '%';  
+					}
+				},
 			}]
 		}
-		
 	}
 }
 
@@ -476,3 +507,6 @@ window.addEventListener('load', function(){
 	window.myLine = new Chart(barChart, barChartConfig_2);
 	
 });	
+
+
+
