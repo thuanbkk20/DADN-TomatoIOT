@@ -1,7 +1,3 @@
-<?php 
-    echo (empty($msg)?false:$msg);
-?>
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -30,6 +26,9 @@
                     </a>
                 </div>
                 <h2 class="auth-heading text-center mb-5"><strong style="color:forestgreen">TPPT</strong> Tomato IoT</h2>
+                <span style="color: red">
+                    <?php echo (empty($msg)?false:$msg); ?>
+                </span>
                 <div class="auth-form-container text-start">
                     <form method="post" class="auth-form login-form" action="<?php echo _WEB_ROOT; ?>/site/login">         
                         <div class="email mb-3">

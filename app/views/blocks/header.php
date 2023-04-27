@@ -64,8 +64,9 @@ function dateDiff($date)
 						            <h5 class="dropdown-menu-title mb-0">Thông báo</h5>
 <!--									--><?php //echo '<pre>'; print_r($noti); echo '</pre>';  ?>
 						        </div><!--//dropdown-menu-title-->
-						        <div class="dropdown-menu-content">
+						        <div class="dropdown-menu-content" id="headerLog">
                                     <?php
+										$i = 0;
                                         foreach ($noti as $each):
                                     ?>
 							       <div class="item p-3">
@@ -75,14 +76,15 @@ function dateDiff($date)
 									        </div><!--//col-->
 									        <div class="col">
 										        <div class="info"> 
-											        <div class="desc"><?php echo $each['description'] ?></div>
-											        <div class="meta"><?php echo dateDiff($each['time']) ?></div>
+											        <div class="desc" id="<?php echo "des".$i;?>"><?php echo $each['description'] ?></div>
+											        <div class="meta" id="<?php echo "time".$i;?>"><?php echo dateDiff($each['time']) ?></div>
 										        </div>
 									        </div><!--//col--> 
 								        </div><!--//row-->
 								        <a class="link-mask" href=<?php echo _WEB_ROOT."/history";?>></a>
 							       </div><!--//item-->
                                     <?php
+									$i++;
                                     endforeach;
                                     ?>
 						        </div><!--//dropdown-menu-content-->

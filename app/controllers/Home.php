@@ -46,12 +46,6 @@ class home extends Controller{
         $soil_humidLastUpdate = date('y/m/d H:i:s',strtotime($soil_humidFeed->getLastUpdate()));
         $tempLastData = $tempFeed->getLastData();
         $tempLastUpdate = date('y/m/d H:i:s',strtotime($tempFeed->getLastUpdate()));
-
-        //Lưu vào database
-        // $this->model['EnvModel']->addData(1,$tempLastUpdate,$tempLastData);
-        // $this->model['EnvModel']->addData(2,$lightLastUpdate,$lightLastData);
-        // $this->model['EnvModel']->addData(3,$air_humidLastUpdate,$air_humidLastData);
-        // $this->model['EnvModel']->addData(4,$soil_humidLastUpdate,$soil_humidLastData);
         
         //Dữ liệu để render ra dashboard
         $this->data['sub_content']['air_humidLastData'] = $air_humidLastData;
@@ -92,33 +86,6 @@ class home extends Controller{
         $this->data["header_content"]["noti"] = $this->model['Log']->get4Log();
         $this->render('layouts/basic_layout', $this->data);
     }
-
-    // public function device_notify(){
-    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-    //     $this->data["content"] = 'dashboard/device_notify';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
-
-    // public function device_manage(){
-    //     $this->data['sub_content']['page_title'] = "Thiết bị - Chi tiết";
-    //     $this->data["content"] = 'dashboard/device_manage';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
-    // public function setting(){
-    //     $this->data['sub_content']['page_title'] = "Cài đặt - Chi tiết";
-    //     $this->data["content"] = 'dashboard/setting';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
-    // public function account(){
-    //     $this->data['sub_content']['page_title'] = "Tài khoản - Chi tiết";
-    //     $this->data["content"] = 'dashboard/account';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
-    // public function history(){
-    //     $this->data['sub_content']['page_title'] = "Lịch sử - Chi tiết";
-    //     $this->data["content"] = 'dashboard/history';
-    //     $this->render('layouts/basic_layout', $this->data);
-    // }
 
     //Check xem có phải là ban ngày không
     public function isDaytime() {
@@ -249,6 +216,11 @@ class home extends Controller{
         $data2 = $this->model['EnvModel']->getChartData(2,$date);
         file_put_contents(_DIR_ROOT.'/public/assets/json/lightHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
         file_put_contents(_DIR_ROOT.'/public/assets/json/lightHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
+    }
+
+    public function autoAddLog(){
+        $data = $this->model['Log']->get4Log();
+        file_put_contents(_DIR_ROOT.'/public/assets/json/log.json',json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 }
 
