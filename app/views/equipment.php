@@ -1,9 +1,8 @@
-<!--<div style="width:70%;float:right;">-->
-<!--    --><?php //
-//        echo 'Tất cả sensor đều thuộc khu vực 1, tình trạng kết nối đã có, mn tự thêm mô tả nếu muốn';
-//        echo '<pre>'; print_r($sensor); echo '</pre>';
-//    ?>
-<!--</div>-->
+<style>
+    .app-content {
+        height: 83.5vh !important;
+    }
+</style>
 
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
