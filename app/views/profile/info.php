@@ -1,3 +1,8 @@
+<style>
+    .app-content {
+        height: 83.5vh !important;
+    }
+</style>
 <div class="app-wrapper">
     <form method="post" action="<?php echo _WEB_ROOT; ?>/profile">
         <div class="app-content pt-3 p-md-3 p-lg-4">

@@ -1,14 +1,21 @@
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-12 col-md-11 col-lg-7 col-xl-6 mx-auto">  
-            <div class="app-card p-5 text-center shadow-sm">
-                <h1 class="page-title mb-4">404<br><span class="font-weight-light">Page Not Found</span></h1>
-                <div class="mb-4">
-                    Sorry, we can't find the page you're looking for. 
-                </div>
-                <a class="btn app-btn-primary" href=<?php echo _WEB_ROOT."/home";?>>Go to home page</a>
-            </div>
-        </div><!--//col-->
-    </div><!--//row-->
-</div><!--//container-->
-
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>TPPT - IoT Tomato</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php echo "<link type='image/x-icon' rel='icon' href='"._ROOT."/public/assets/images/tomato.png'>";?>
+    <!-- FontAwesome JS-->
+    <?php echo "<script defer src='"._ROOT."/public/assets/plugins/fontawesome/js/all.min.js'></script>";?>
+    <!-- App CSS -->  
+    <?php echo "<link id='theme-style' rel='stylesheet' href='"._ROOT."/public/assets/css/portal.css'>";?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!-- Jquery để sử dụng ajax -->
+</head> 
+<body>
+    <div style="width: 100vw; height: 100vh; overflow: hidden;">
+        <img style="width: 100%; height: 100%; object-fit: cover;" src="/public/assets/images/404.jpg" alt="404 Page Not Found">
+    </div>
+</body>
+</html>
