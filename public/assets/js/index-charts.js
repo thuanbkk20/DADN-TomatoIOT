@@ -16,10 +16,10 @@ $(document).ready(function(){
     f2();
     f3();
     f4();
-    setInterval(function(){f1()},30000);
-    setInterval(function(){f2()},30000);
-    setInterval(function(){f3()},30000);
-    setInterval(function(){f4()},30000);
+    setInterval(function(){f1()},60000);
+    setInterval(function(){f2()},60000);
+    setInterval(function(){f3()},60000);
+    setInterval(function(){f4()},60000);
 });
 
 // LẤY DỮ LIỆU LÊN NHIỆT ĐỘ
@@ -30,7 +30,7 @@ function f1(){
         // console.log("Update temp chart json");
     }});
     //Lấy dữ liệu từ file json
-	$.ajax({url:webRoot+'/public/assets/json/tempHumidChart1.json',success: function(result){
+	$.ajax({url:webRoot+'/public/assets/json/tempChart1.json',success: function(result){
 		if(result){
 			var tempData = result.slice(-24).map(function(data)
 			{
@@ -40,7 +40,7 @@ function f1(){
 			myLineChart1.update();
 		}
 	}});
-	$.ajax({url:webRoot+'/public/assets/json/tempHumidChart2.json',success: function(result){
+	$.ajax({url:webRoot+'/public/assets/json/tempChart2.json',success: function(result){
 		if(result){
 			var tempData = result.slice(-24).map(function(data)
 			{
@@ -81,7 +81,7 @@ function f2(){
 function f3(){
     var webRoot = $("#webRoot").val();
     $.ajax({url:webRoot+'/Home/lightChartData',success: function(result){}});
-    $.ajax({url:webRoot+'/public/assets/json/lightHumidChart1.json',success: function(result){
+    $.ajax({url:webRoot+'/public/assets/json/lightChart1.json',success: function(result){
 		var lightData = result.slice(-24).map(function(data)
 		{
 			return data.value;
@@ -91,7 +91,7 @@ function f3(){
 		myLineChart3.update();
     }});
 
-    $.ajax({url:webRoot+'/public/assets/json/lightHumidChart2.json',success: function(result){
+    $.ajax({url:webRoot+'/public/assets/json/lightChart2.json',success: function(result){
 		var lightData = result.slice(-24).map(function(data)
 		{
 			return data.value;

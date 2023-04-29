@@ -56,11 +56,13 @@
                                         <td class="cell fw-bold"><?php echo $user['username']; ?></td>
                                         <td class="cell"><?php echo $user['phone_number']; ?></td>
                                         <td class="cell"><?php echo $user['role']; ?></td>
+                                        <?php if($user['role']!="Quản lý"){?>
                                         <td class="cell row justify-content-start">
                                             <a class="col-3" role="button" href=<?php echo _WEB_ROOT."/admin/UserModify/update?id=".$user['id']; ?>><svg class="fa-solid fa-edit"></svg></a>
                                             <a class="col-3" role="button"
                                                data-bs-toggle="modal" data-bs-target="#confirm_modal"><svg class="fa-solid fa-trash-can"></svg></a>
                                         </td>
+                                        <?php } ?>
                                     </tr>
                                     <?php endforeach; ?>
                                         <div class="modal fade" id="confirm_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -71,7 +73,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Đóng</button>
-                                                        <button type="button" class="btn btn-success" href=<?php echo _WEB_ROOT."/admin/UserModify/delete?id=".$user['id']; ?>>Xác nhận</button>
+                                                        <a type="button" class="btn btn-success" href=<?php echo _WEB_ROOT."/admin/UserModify/delete?id=".$user['id']; ?>>Xác nhận</a>
                                                     </div>
                                                 </div>
                                             </div>
