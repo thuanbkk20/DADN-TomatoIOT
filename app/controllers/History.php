@@ -30,7 +30,7 @@ class history extends Controller{
         //determine the total number of pages available
         $number_of_page = ceil ($number_of_result / $results_per_page);
         //Lấy dữ liệu gửi đến view
-        $query = "SELECT * FROM log LIMIT " . $page_first_result . "," . $results_per_page;
+        $query = "SELECT * FROM log "."ORDER BY id DESC LIMIT " . $page_first_result . "," . $results_per_page;
         $query = $this->db->query($query);
         $data = $query->fetchAll(PDO::FETCH_ASSOC);
         // $data = $this->model['Log']->getAll();

@@ -29,7 +29,7 @@ class m0001_initial{
         DROP TABLE IF EXISTS area;
         CREATE TABLE area(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            location varchar(100) not null,
+            location varchar(100) not null, 
             name varchar(50) not null
         );
        
@@ -38,7 +38,7 @@ class m0001_initial{
             id INT PRIMARY KEY AUTO_INCREMENT,
             level int not null,
             type varchar(50) not null,
-		 name varchar(50) not null,
+		    name varchar(50) not null,
             area INT not null
         );
        
@@ -51,7 +51,7 @@ class m0001_initial{
        
         DROP TABLE IF EXISTS setting;
         CREATE TABLE setting(
-		id INT PRIMARY KEY AUTO_INCREMENT,
+		    id INT PRIMARY KEY AUTO_INCREMENT,
             type varchar(20) not null,
             max_value int not null,
             min_value int not null,
