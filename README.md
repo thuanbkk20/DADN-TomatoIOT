@@ -27,6 +27,10 @@
 
 3. Nếu không được như vậy thì hãy `drop` hết table trong `database` rồi chạy migrate lại.<br />
 
+### Add adafruit IO key
+
+Vào file core/AdafruitIO.php, thêm giá trị sau đây  `aio_EevX842A3w3Qz6A7Bs5RbZpum1bQ` làm giá trị mặt định cho tham số `$key` của hàm `__construct`
+
 ## Run project
 
 Để chạy project, chạy lệnh sau:
