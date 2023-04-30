@@ -22,14 +22,14 @@
 
     ```bash
     [2021-10-28 19:10:49] - Applying migration m0001_initial.php
-    [2021-10-28 19:10:49] - Applyied migration m0001_initial.php
+    [2021-10-28 19:10:49] - Applied migration m0001_initial.php
     ```
 
 3. Nếu không được như vậy thì hãy `drop` hết table trong `database` rồi chạy migrate lại.<br />
 
 ### Add adafruit IO key
 
-Vào file core/AdafruitIO.php, thêm giá trị sau đây ![alt text](https://github.com/thuanbkk20/DADN-TomatoIOT/blob/public/assets/images/key.jpg?raw=true) làm giá trị mặt định cho tham số `$key` của hàm `__construct`
+Vào file core/AdafruitIO.php, thêm giá trị sau đây ![Key image](https://github.com/thuanbkk20/DADN-TomatoIOT/blob/main/public/assets/images/key.png?raw=true) làm giá trị mặt định cho tham số `$key` của hàm `__construct`
 
 ## Run project
 
