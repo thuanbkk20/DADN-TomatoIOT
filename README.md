@@ -29,7 +29,7 @@
 
 ### Add adafruit IO key
 
-Vào file core/AdafruitIO.php, thêm giá trị sau đây ![alt text](https://github.com/thuanbkk20/DADN-TomatoIOT/blob/public/assets/images/key.jpg?raw=true) `aio_EevX842A3w3Qz6A7Bs5RbZpum1bQ` làm giá trị mặt định cho tham số `$key` của hàm `__construct`
+Vào file core/AdafruitIO.php, thêm giá trị sau đây ![alt text](https://github.com/thuanbkk20/DADN-TomatoIOT/blob/public/assets/images/key.jpg?raw=true) làm giá trị mặt định cho tham số `$key` của hàm `__construct`
 
 ## Run project
 
