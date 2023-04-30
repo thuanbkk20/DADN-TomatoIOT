@@ -56,7 +56,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="text" class="form-control" id="password" name="password"
+                            <input type="password" class="form-control" id="password" name="password"
                                    value="<?php echo (empty($old['password'])?false:$old['password']);?>" required/>
                             <span class="text-danger">
                                 <?php echo (empty($errors['password'])?false:$errors['password']); ?>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="confirm_password" class="form-label">Nhập lại mật khẩu</label>
-                            <input type="text" class="form-control" id="confirm_password" name="confirm_password"
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                    value="<?php echo (empty($old['confirm_password'])?false:$old['confirm_password']);?>" required/>
                             <span class="text-danger">
                                 <?php echo (empty($errors['confirm_password'])?false:$errors['confirm_password']); ?>

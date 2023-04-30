@@ -172,8 +172,8 @@ class home extends Controller{
         // $date = '2023-04-24';
         $date = date("Y-m-d");
         $data1 = $this->model['EnvModel']->getChartData(4,$date);
-        // $date = '2023-04-19';
-        $date = date("Y-m-d",strtotime("-1 days"));
+        $date = '2023-04-19';
+        // $date = date("Y-m-d",strtotime("-1 days"));
         $data2 = $this->model['EnvModel']->getChartData(4,$date);
         file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
         file_put_contents(_DIR_ROOT.'/public/assets/json/soilHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
@@ -185,8 +185,8 @@ class home extends Controller{
         // $date = '2023-04-24';
         $date = date("Y-m-d");
         $data1 = $this->model['EnvModel']->getChartData(3,$date);
-        // $date = '2023-04-19';
-        $date = date("Y-m-d",strtotime("-1 days"));
+        $date = '2023-04-24';
+        // $date = date("Y-m-d",strtotime("-1 days"));
         $data2 = $this->model['EnvModel']->getChartData(3,$date);
         file_put_contents(_DIR_ROOT.'/public/assets/json/airHumidChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
         file_put_contents(_DIR_ROOT.'/public/assets/json/airHumidChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
@@ -198,8 +198,8 @@ class home extends Controller{
         // $date = '2023-04-24';
         $date = date("Y-m-d");
         $data1 = $this->model['EnvModel']->getChartData(1,$date);
-        // $date = '2023-04-19';
-        $date = date("Y-m-d",strtotime("-1 days"));
+        $date = '2023-04-19';
+        // $date = date("Y-m-d",strtotime("-1 days"));
         $data2 = $this->model['EnvModel']->getChartData(1,$date);
         file_put_contents(_DIR_ROOT.'/public/assets/json/tempChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
         file_put_contents(_DIR_ROOT.'/public/assets/json/tempChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
@@ -211,8 +211,8 @@ class home extends Controller{
         // $date = '2023-04-24';
         $date = date("Y-m-d");
         $data1 = $this->model['EnvModel']->getChartData(2,$date);
-        // $date = '2023-04-19';
-        $date = date("Y-m-d",strtotime("-1 days"));
+        $date = '2023-04-24';
+        // $date = date("Y-m-d",strtotime("-1 days"));
         $data2 = $this->model['EnvModel']->getChartData(2,$date);
         file_put_contents(_DIR_ROOT.'/public/assets/json/lightChart1.json',json_encode($data1,JSON_UNESCAPED_UNICODE));
         file_put_contents(_DIR_ROOT.'/public/assets/json/lightChart2.json',json_encode($data2,JSON_UNESCAPED_UNICODE));
